@@ -1,0 +1,10 @@
+# vim temporary files
+*.sw*
+
+# Dependencies
+node_modules/
+bower_components/
+
+# Built files
+dist/
+/.project
