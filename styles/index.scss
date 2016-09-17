@@ -10,7 +10,7 @@
 
     $titlesColor: $color-title;
 
-    textarea{
+    input,textarea{
       resize: none;
       width: 100%;
       margin-bottom: 10px;
@@ -18,11 +18,62 @@
       border: 0.25em solid transparentize($titlesColor, 0.6);
       border-radius: 0.2em;
       background: black;
-      color: $titlesColor;
       transition: border-color 0.7s ease-out;
+      color: $color-credits;
+      text-align: center;
+      outline: none;
+      font-family: $font-credits;
+      font-size: 1em;
+      font-weight: 800;
 
       &:active, &:focus {
         border-color: $titlesColor;
       }
+
+      &#f-logo{
+          color: $titlesColor;
+          font-family: $font-title;
+          font-size: 50px;
+          font-weight: normal;
+          height: 125px;
+          line-height: 86%;
+          border: 0.0666em solid transparentize($titlesColor, 0.6);
+          border-radius: 0.0533em;
+          font-weight: normal;
+
+          &:active, &:focus {
+            border-color: $titlesColor;
+          }
+      }
     }
+
+    .playButton{
+        font-family: $font-title;
+        cursor: pointer;
+        font-size: 50px;
+        border: 0;
+        background: transparent;
+        color: $titlesColor;
+        text-shadow: none;
+        transition: text-shadow 0.5s ease-out;
+        outline: none;
+
+        &:focus, &:hover {
+        text-shadow: -1px 1px 8px #ccc, 1px -1px 8px #ccc;
+        }
+    }
+}
+
+.credits{
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hide{
+    display: none;
 }

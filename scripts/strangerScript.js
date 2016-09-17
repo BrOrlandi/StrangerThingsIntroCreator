@@ -10,50 +10,15 @@ Modernizr.addTest('textstroke', function () {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  var bind = false;
-  var text = null;
-
-  // Must-haves
-  if (!Modernizr.audio || !Modernizr.cssanimations || !Modernizr.textshadow) {
-    text = document.getElementsByClassName("intro-text--cant")[0];
-  }
-  // Should-haves
-  else if (!Modernizr.textstroke) {
-      bind = true;
-      text = document.getElementsByClassName("intro-text--shouldnt")[0];
-    }
-    // All good!
-    else {
-        bind = true;
-        text = document.getElementsByClassName("intro-text--can")[0];
-      }
-
-  text.className += " intro-text--show";
-
-  if (bind) {
-    var btns = document.querySelectorAll("[data-play]");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function () {
-        start();
-      });
-    }
-  }
-});
-
 // Fade out intro, start music and animation
 var started = false;
-function start() {
+window.startStranger = function start() {
   if (started) {
     return;
   }
   started = true;
 
-  var intro = document.getElementsByClassName("intro")[0];
-
   var music = new Audio("./assets/music.mp3");
-
-  intro.className += " intro--hide";
 
   music.addEventListener("canplay", function () {
     setTimeout(function () {

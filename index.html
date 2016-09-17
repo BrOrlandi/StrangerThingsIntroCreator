@@ -18,45 +18,13 @@
     <!-- More info: https://developer.chrome.com/multidevice/android/installtohomescreen -->
   </head>
   <body>
-    <div id="react-body"  style="display:none"></div>
-    <div id="StrangerIntro" >
-        <div class="intro">
-          <h1 class="intro-title">Stranger Things</h1>
 
-          <p class="intro-text intro-text--can">
-            The following demo is performance intensive, and will play audio. If you
-            experience any issues, try sizing down your browser and refreshing.
-            <br/>
-            <button class="intro-text-play" data-play>&#9654;</button>
-          </p>
-
-          <p class="intro-text intro-text--shouldnt">
-            Unfortunately this demo uses many features only found in the latest
-            version of Google Chrome. You can still run this, but it may not look
-            as intended. Please try running it in Chrome for the best experience.
-            <br/>
-            <a class="intro-text-button" href="https://www.google.com/chrome/browser/">
-              Download Chrome
-            </a>
-            <button class="intro-text-button" data-play>
-              Play Anyway
-            </button>
-          </p>
-
-          <p class="intro-text intro-text--cant">
-            Unfortunately your browser doesn't support this demo. Please download
-            Google Chrome, and try running it again.
-            <br/>
-            <a class="intro-text-button" href="https://www.google.com/chrome/browser/">
-              Download Chrome
-            </a>
-          </p>
-
-          <noscript>
-            The following demo requires javascript to run. Please enable it and
-            refresh the browser.
-          </noscript>
-        </div>
+  <noscript style="color:white">
+    The following demo requires javascript to run. Please enable it and
+    refresh the browser.
+  </noscript>
+    <div id="react-body" ></div>
+    <div id="StrangerIntro" class="hide">
 
         <div class="viewport">
           <div class="scene">
@@ -134,53 +102,53 @@
 
           <div class="credits">
             <div class="credits-group">
+              <div id="st-credits1" class="credits-group-credit">
+                A NETFLIX ORIGINAL SERIES
+              </div>
+            </div>
+
+            <div class="credits-group">
+              <div class="credits-group-credit" data-text="WINONA RYDER">
+                  WINONA RYDER
+              </div>
+            </div>
+
+            <div class="credits-group">
               <div class="credits-group-credit">
-                A Netflix Original Series
+                DAVID HARBOUR
               </div>
             </div>
 
             <div class="credits-group">
-              <div class="credits-group-credit" data-text="Winona Ryder">
-                Winona Ryder
+              <div class="credits-group-credit" data-text="FINN WOLFHARD">
+                FINN WOLFHARD
+              </div>
+              <div class="credits-group-credit" data-text="MILLIE BOBBY BROWN">
+                MILLIE BOBBY BROWN
               </div>
             </div>
 
             <div class="credits-group">
-              <div class="credits-group-credit">
-                David Harbour
+              <div class="credits-group-credit" data-text="GATEN MATARAZZO">
+                GATEN MATARAZZO
+              </div>
+              <div class="credits-group-credit" data-text="CALEB MCLAUGHLIN">
+                CALEB M<span>c</span>LAUGHLIN
               </div>
             </div>
 
             <div class="credits-group">
-              <div class="credits-group-credit" data-text="Finn Wolfhard">
-                Finn Wolfhard
+              <div class="credits-group-credit" data-text="NATALIA DYER">
+                NATALIA DYER
               </div>
-              <div class="credits-group-credit" data-text="Millie Bobby Brown">
-                Millie Bobby Brown
-              </div>
-            </div>
-
-            <div class="credits-group">
-              <div class="credits-group-credit" data-text="Gaten Matarazzo">
-                Gaten Matarazzo
-              </div>
-              <div class="credits-group-credit" data-text="Caleb McLaughlin">
-                Caleb M<span>c</span>Laughlin
+              <div class="credits-group-credit" data-text="CHARLIE HEATON">
+                CHARLIE HEATON
               </div>
             </div>
 
             <div class="credits-group">
-              <div class="credits-group-credit" data-text="Natalia Dyer">
-                Natalia Dyer
-              </div>
-              <div class="credits-group-credit" data-text="Charlie Heaton">
-                Charlie Heaton
-              </div>
-            </div>
-
-            <div class="credits-group">
-              <div class="credits-group-credit" data-text="Cara Buono">
-                Cara Buono
+              <div class="credits-group-credit" data-text="CARA BUONO">
+                CARA BUONO
               </div>
             </div>
 
@@ -188,8 +156,8 @@
               <div class="credits-group-sub" data-text="And">
                 And
               </div>
-              <div class="credits-group-credit" data-text="Matthew Modine">
-                Matthew Modine
+              <div class="credits-group-credit" data-text="MATTHEW MODINE">
+                MATTHEW MODINE
               </div>
             </div>
 
@@ -197,8 +165,8 @@
               <div class="credits-group-sub" data-text="Co-Executive Producer">
                 Co-Executive Producer
               </div>
-              <div class="credits-group-credit" data-text="Iain Paterson">
-                Iain Paterson
+              <div class="credits-group-credit" data-text="IAIN PATERSON">
+                IAIN PATERSON
               </div>
             </div>
 
@@ -206,8 +174,8 @@
               <div class="credits-group-sub" data-text="Executive Producer">
                 Executive Producer
               </div>
-              <div class="credits-group-credit" data-text="Karl Gajdusek">
-                Karl Gajdusek
+              <div class="credits-group-credit" data-text="KARL GAJDUSEK">
+                KARL GAJDUSEK
               </div>
             </div>
 
@@ -215,26 +183,14 @@
               <div class="credits-group-sub" data-text="Executive Producers">
                 Executive Producers
               </div>
-              <div class="credits-group-credit" data-text="Cindy Holland">
-                Cindy Holland
+              <div class="credits-group-credit" data-text="CINDY HOLLAND">
+                CINDY HOLLAND
               </div>
-              <div class="credits-group-credit" data-text="Brian Wright">
-                Brian Wright
+              <div class="credits-group-credit" data-text="BRIAN WRIGHT">
+                BRIAN WRIGHT
               </div>
-              <div class="credits-group-credit" data-text="Matt Thunell">
-                Matt Thunell
-              </div>
-            </div>
-
-            <div class="credits-group">
-              <div class="credits-group-sub" data-text="Executive Producers">
-                Executive Producers
-              </div>
-              <div class="credits-group-credit" data-text="Shawn Levy">
-                Shawn Levy
-              </div>
-              <div class="credits-group-credit" data-text="Dan Cohen">
-                Dan Cohen
+              <div class="credits-group-credit" data-text="MATT THUNELL">
+                MATT THUNELL
               </div>
             </div>
 
@@ -242,8 +198,20 @@
               <div class="credits-group-sub" data-text="Executive Producers">
                 Executive Producers
               </div>
-              <div class="credits-group-credit" data-text="The Duffer Brothers">
-                The Duffer Brothers
+              <div class="credits-group-credit" data-text="SHAWN LEVY">
+                SHAWN LEVY
+              </div>
+              <div class="credits-group-credit" data-text="DAN COHEN">
+                DAN COHEN
+              </div>
+            </div>
+
+            <div class="credits-group">
+              <div class="credits-group-sub" data-text="Executive Producers">
+                Executive Producers
+              </div>
+              <div class="credits-group-credit" data-text="THE DUFFER BROTHERS">
+                THE DUFFER BROTHERS
               </div>
             </div>
 
@@ -251,8 +219,8 @@
               <div class="credits-group-sub" data-text="Created By">
                 Created By
               </div>
-              <div class="credits-group-credit" data-text="Will O'Beirne">
-                Will O'Beirne
+              <div class="credits-group-credit" data-text="WILL O'BEIRNE">
+                THE DUFFER BROTHERS
               </div>
             </div>
           </div>

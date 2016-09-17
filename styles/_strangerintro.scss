@@ -127,11 +127,6 @@ body {
     font-size: 16px;
     line-height: 22px;
     font-family: $font-credits;
-    display: none;
-
-    &--show {
-      display: block;
-    }
 
     &-button {
       display: inline-block;
@@ -349,7 +344,7 @@ body {
 
     &-credit {
       font-weight: 800;
-      text-transform: uppercase;
+    //   text-transform: uppercase;
 
       > span {
         @include v-rule(font-size, $credits-fsize * 0.8);
