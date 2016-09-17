@@ -17,13 +17,18 @@
     <meta name="mobile-web-app-capable" content="yes">
     <!-- More info: https://developer.chrome.com/multidevice/android/installtohomescreen -->
   </head>
-  <body>
+  <body class="overflow">
 
   <noscript style="color:white">
     The following demo requires javascript to run. Please enable it and
     refresh the browser.
   </noscript>
-    <div id="react-body" ></div>
+    <div id="config">
+        <video id="video" class="fullscreen" preload="auto" autoplay poster="/assets/bg.jpg" loop muted>
+            <source src="https://player.vimeo.com/external/178812339.hd.mp4?s=bf1db383854643d8d92aac96a5bca01802122d46&profile_id=174" type="video/mp4">
+        </video>
+        <div id="react-body" ></div>
+    </div>
     <div id="StrangerIntro" class="hide">
 
         <div class="viewport">
