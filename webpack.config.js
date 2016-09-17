@@ -4,6 +4,8 @@ var webpack = require('webpack'),
     LiveReloadPlugin = require('webpack-livereload-plugin'),
     path = require('path');
 
+var autoprefixer = require('autoprefixer');
+
 var cssExtractTextPlugin = new ExtractTextPlugin('[contenthash].css');
 
 module.exports = {
@@ -20,7 +22,7 @@ module.exports = {
       { test: /.(png|jpe?g|gif|svg.*)$/, loader: 'file-loader!img-loader?optimizationLevel=7&progressive=true'},
       {
         test: /\.css$/,
-        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader'),
+        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader'),
       },
       {
         test: /\.scss$/,
@@ -31,6 +33,10 @@ module.exports = {
         loader: 'html?attrs=link:href img:src',
       },
     ],
+  },
+
+  postcss: function() {
+    return [autoprefixer({browsers: "> 3%"})];
   },
 
   plugins: [

@@ -1,0 +1,28 @@
+@import "strangerintro";
+
+.STIC{
+    width: 500px;
+    margin: 0 auto;
+
+    .intro-title{
+        font-size: 50px;
+    }
+
+    $titlesColor: $color-title;
+
+    textarea{
+      resize: none;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 0.25em;
+      border: 0.25em solid transparentize($titlesColor, 0.6);
+      border-radius: 0.2em;
+      background: black;
+      color: $titlesColor;
+      transition: border-color 0.7s ease-out;
+
+      &:active, &:focus {
+        border-color: $titlesColor;
+      }
+    }
+}
