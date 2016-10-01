@@ -220,6 +220,10 @@ body {
 
     &--second {
       transform: translateY(-38%);
+
+      &.larger{
+          transform: translateY(-20%);
+      }
     }
 
     &-letter {
@@ -232,6 +236,10 @@ body {
         display: inline-block;
         transform: translateY(-2.8%);
         @include v-rule(font-size, $title-fsize-large);
+
+        &.second {
+            transform: translateY(-7.8%);
+        }
       }
     }
   }
