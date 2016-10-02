@@ -56,6 +56,7 @@ body.overflow{
           border: 0.0666em solid transparentize($titlesColor, 0.6);
           border-radius: 0.0533em;
           font-weight: normal;
+          text-transform: uppercase;
 
           &:active, &:focus {
             border-color: $titlesColor;

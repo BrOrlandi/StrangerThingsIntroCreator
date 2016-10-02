@@ -18,17 +18,16 @@ window.startStranger = function start() {
   }
   started = true;
 
-  var music = new Audio("./assets/music.mp3");
+  window.music = new Audio("./assets/music.mp3");
 var ja = false;
   music.addEventListener("canplay", function () {
     setTimeout(function () {
       startAnimation();
       setTimeout(function () {
-        //   console.log("aaa");
-        if(!ja){
-          music.currentTime = 27;
-          ja = true;
-      }
+        // if(!ja){
+        //   music.currentTime = 27;
+        //   ja = true;
+        // }
         music.play();
       }, 200);
     }, 1500);
@@ -39,8 +38,8 @@ var ja = false;
 function startAnimation() {
   // In milliseconds, how long each one is
   var creditsMs = 3000;
-  // var scenesMs = [creditsMs, creditsMs * 2, creditsMs, creditsMs, creditsMs, creditsMs, creditsMs * 2, 19500];
-  var scenesMs = [0, 0, 0, 0, 0, 0, 0, 1000];
+  var scenesMs = [creditsMs, creditsMs * 2, creditsMs, creditsMs, creditsMs, creditsMs, creditsMs * 2, 19500];
+  // var scenesMs = [0, 0, 0, 0, 0, 0, 0, 1000];
 
   // Elements
   var viewport = document.getElementsByClassName("viewport")[0];
@@ -72,7 +71,7 @@ function startAnimation() {
   };
 
   for (var i = 0; i < credits.length; i++) {
-    // _loop(i);
+    _loop(i); // comment this line to hide credits
   }
 
   // Set up scenes to show after each interval
@@ -97,7 +96,7 @@ function startAnimation() {
 
       // Show the final credits
       setTimeout(function () {
-        // finalCredit.className += " credits-group--show";
+        finalCredit.className += " credits-group--show"; // comment this line to hide credits
       }, offset + scenesMs[_i + 1] + 1500);
     }
   };

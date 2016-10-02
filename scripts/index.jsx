@@ -2,104 +2,12 @@ const $ = window.jQuery = require('jquery');
 import 'strangerScript';
 import ReactDOM from 'react-dom';
 import React from 'react';
+import makeTheStrangerIntro from 'makeTheStrangerIntro';
 
-const word1Mapping = {
-    0: [],
-    1: ['N1'],
-    2: ['T1','N1'],
-    3: ['T1','N1','G1'],
-    4: ['T1','N1','G1','E'],
-    5: ['T1','A','N1','G1','E'],
-    6: ['T1','R1','A','N1','G1','E'],
-    7: ['T1','R1','A','A','N1','G1','E'],
-    8: ['T1','R1','A','A','N1','G1','G1','E'],
-    9: ['T1','R1','R1','A','A','N1','G1','G1','E'],
-    10: ['T1','R1','R1','A','A','N1','G1','G1','G1','E']
-};
-
-const word2Mapping = {
-    0: [],
-    1: ['N2'],
-    2: ['I','N2'],
-    3: ['H','I','N2'],
-    4: ['H','I','N2','G2'],
-    5: ['H','I','N2','G2','S2'],
-    6: ['T2','H','I','N2','G2','S2'],
-    7: ['T2','H','I','N2','G2','G2','S2'],
-    8: ['T2','H','I','I','N2','G2','G2','S2'],
-    9: ['T2','H','I','I','N2','G2','G2','G2','S2'],
-    10: ['T2','T2','H','I','I','N2','G2','G2','G2','S2']
-};
-
-window.showStrangerIntro = function(){
-    $("#config").addClass('hide');
-    $("#StrangerIntro").removeClass('hide');
-    $("body").removeClass('overflow');
-    document.querySelector("#video").pause();
-};
-
-window.stopStrangerIntro = function(){
-    $("#config").removeClass('hide');
-    $("#StrangerIntro").addClass('hide');
-    $("body").addClass('overflow');
-    document.querySelector("#video").play();
-};
-
-const makeTheStrangerIntro = function(opening){
-    console.log(opening);
-    var logo = opening.logo;
-    var brk = logo.indexOf('\n');
-    var word1 = logo.substring(0,brk);
-    var word2 = logo.substring(brk+1);
-
-    var firstWordLarges = [$('#firstLargeLeft'),$('#firstLargeRight')];
-    var secondWordLarges = [$('#secondLargeLeft'),$('#secondLargeRight')];
-
-    var toShow = secondWordLarges;
-    var toHide = firstWordLarges;
-
-    if(word1.length > word2.length && word1.length > 1){
-        toShow = firstWordLarges;
-        toHide = secondWordLarges;
-
-        var firstChar = word1[0];
-        var lastChar = word1[word1.length-1];
-        word1 = word1.substring(1,word1.length-1);
-        $('.title-word--second').removeClass('larger');
-    }else if(word2.length > 1){
-        var firstChar = word2[0];
-        var lastChar = word2[word2.length-1];
-        word2 = word2.substring(1,word2.length-1);
-        $('.title-word--second').addClass('larger');
-    }
-    toShow[0].show();
-    toShow[1].show();
-    toHide[0].hide();
-    toHide[1].hide();
-
-    toShow[0].find('span').text(firstChar);
-    toShow[1].find('span').text(lastChar);
-
-    console.log(word1);
-    console.log(word2);
-
-    function parseWord(word, mappings,element){
-        var mapping = mappings[word.length];
-        element.empty();
-        for(var i in word){
-            var letter = $('<span></span>',{class:'title-word-letter',
-                text:word[i],
-                'data-letter':mapping[i]});
-            element.append(letter);
-        }
-    };
-    var firstWord = $('#firstWord');
-    var secondWord = $('#secondWord');
-
-    parseWord(word1,word1Mapping,firstWord);
-    parseWord(word2,word2Mapping,secondWord);
-
-
+const defaultOpening = {
+    logo: `STRANGER
+THINGS`,
+    credits1: "A NETFLIX ORIGINAL SERIES"
 };
 
 class App extends React.Component {
@@ -109,7 +17,9 @@ class App extends React.Component {
         this.state={
             canPlay: null,
             editing: false,
-            loading: false
+            loading: false,
+            alreadyPlayed: false,
+            opening: defaultOpening
         }
     }
 
@@ -125,12 +35,30 @@ class App extends React.Component {
                 }
                 makeTheStrangerIntro(opening);
                 if(autoPlay){
-                    showStrangerIntro();
-                    startStranger();
+                    this.playIntro();
                 }
+                this.setState({opening});
                }
             });
         }
+    }
+
+    playIntro = ()=>{
+        showStrangerIntro();
+        startStranger();
+        this.setState({alreadyPlayed: true});
+        $(window.music).bind('ended', (e)=>{
+            this.setState({editing: true});
+            window.music.currentTime = 0;
+            stopStrangerIntro();
+        });
+
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.state.alreadyPlayed != nextState.alreadyPlayed)
+            return false;
+        return true;
     }
 
     componentWillReceiveProps(props){
@@ -139,8 +67,10 @@ class App extends React.Component {
                 loading: true,
                 editing: false
             });
+            this.checkHash(props,true);
+        }else{
+            location.reload(); // was seeing a intro before now needs to reload to go back to the home page.
         }
-        this.checkHash(props,true);
     }
 
     componentWillMount(){
@@ -182,7 +112,7 @@ class App extends React.Component {
     submitStranger = (e)=>{
         e.preventDefault();
         var opening ={
-            logo: this.refs.logo.value,
+            logo: this.refs.logo.value.toUpperCase(),
             credits1: this.refs.credits1.value
         };
 
@@ -204,8 +134,11 @@ class App extends React.Component {
 
     onClickPlay = (e)=>{
         e.preventDefault();
-        showStrangerIntro();
-        startStranger();
+        this.playIntro();
+    }
+
+    onClickMakeYourOwn = (e)=>{
+        location.hash = "";
     }
 
     render(){
@@ -238,10 +171,12 @@ class App extends React.Component {
         }
 
         var content;
+        var opening = this.state.opening;
         if(this.state.editing && this.state.canPlay){
             content = <form id="stranger-form" onSubmit={this.submitStranger}>
-                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="100" defaultValue="STRANGER&#13;&#10;THINGS" />
-                <input ref="credits1" spellCheck="false" maxLength="100" defaultValue="A NETFLIX ORIGINAL SERIES" type="text"/>
+                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="20" defaultValue={opening.logo} />
+                <textarea ref="credits1" rows="2" spellCheck="false" maxLength="100" defaultValue={opening.credits1} />
+                {/* <input ref="credits1" spellCheck="false" maxLength="100" defaultValue="A NETFLIX ORIGINAL SERIES" type="text"/> */}
                   {notice}
                 <button className="playButton" type="submit">
                   PLAY
@@ -253,6 +188,10 @@ class App extends React.Component {
               <button className="playButton" onClick={this.onClickPlay}>
                 PLAY
               </button>
+              <br/><br/>
+            <button className="playButton" onClick={this.onClickMakeYourOwn}>
+                MAKE YOUR OWN
+            </button>
             </div>;
         }else{
             content =  notice;
