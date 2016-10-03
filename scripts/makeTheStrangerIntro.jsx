@@ -54,6 +54,9 @@ window.stopStrangerIntro = function(){
     $("#StrangerIntro").addClass('hide');
     $("body").addClass('overflow');
     document.querySelector("#video").play();
+
+    $('.title--full').removeClass('title--show');
+    $('.credits-final').removeClass('credits-group--show');
 };
 
 const makeTheStrangerIntro = function(opening){
@@ -116,7 +119,7 @@ const makeTheStrangerIntro = function(opening){
 
     /// END OF LOGO PREPARATION
 
-    // $('#st-credits1').text(opening.credits1);
+    $('#st-credits1').text(opening.credits1);
 
 };
 

@@ -49,7 +49,6 @@ class App extends React.Component {
         this.setState({alreadyPlayed: true});
         $(window.music).bind('ended', (e)=>{
             this.setState({editing: true});
-            window.music.currentTime = 0;
             stopStrangerIntro();
         });
 
@@ -111,8 +110,13 @@ class App extends React.Component {
 
     submitStranger = (e)=>{
         e.preventDefault();
+        var logo = this.refs.logo.value.toUpperCase();
+
+        if(logo.indexOf('\n') == -1)
+            logo += '\n';
+
         var opening ={
-            logo: this.refs.logo.value.toUpperCase(),
+            logo: logo,
             credits1: this.refs.credits1.value
         };
 

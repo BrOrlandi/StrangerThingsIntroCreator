@@ -11,12 +11,7 @@ Modernizr.addTest('textstroke', function () {
 });
 
 // Fade out intro, start music and animation
-var started = false;
 window.startStranger = function start() {
-  if (started) {
-    return;
-  }
-  started = true;
 
   window.music = new Audio("./assets/music.mp3");
 var ja = false;
