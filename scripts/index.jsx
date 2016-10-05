@@ -207,7 +207,7 @@ class App extends React.Component {
 
         return (
             <div className="STIC">
-                <h1 className="intro-title">Stranger Things<br/>Intro Creator</h1>
+                <h1 className="intro-title">STRANGER THINGS<br/>Intro Creator</h1>
                 {content}
             </div>
         );
