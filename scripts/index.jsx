@@ -92,8 +92,10 @@ class App extends React.Component {
         };
 
         if(this.props.hash){
-            state.editing = false;
             state.loading = true;
+            if(!this.props.edit){
+                state.editing = false;
+            }
         }
 
         // Must-haves
@@ -238,7 +240,8 @@ class App extends React.Component {
 $(window).on('hashchange', function() {
     var params = location.hash.replace('#!/', '').split('/');
     var key = params[0];
-    ReactDOM.render(<App hash={key}/>, document.getElementById('react-body'));
+    var edit = params[1] === "edit";
+    ReactDOM.render(<App hash={key} edit={edit}/>, document.getElementById('react-body'));
 });
 
 $(document).ready(function() {
