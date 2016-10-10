@@ -60,7 +60,6 @@ window.stopStrangerIntro = function(){
 };
 
 const makeTheStrangerIntro = function(opening){
-    console.log(opening);
     var logo = opening.logo;
     var brk = logo.indexOf('\n');
     var word1 = logo.substring(0,brk);
@@ -94,9 +93,6 @@ const makeTheStrangerIntro = function(opening){
     toShow[0].find('span').text(firstChar);
     toShow[1].find('span').text(lastChar);
 
-    console.log(word1);
-    console.log(word2);
-
     function parseWord(word, mappings,element){
         var mapping = mappings[word.length];
         element.empty();
@@ -117,10 +113,26 @@ const makeTheStrangerIntro = function(opening){
     $('#letterN').text(word1[ln]);
     $('#letterG').text(word1[ln+1]);
 
-    /// END OF LOGO PREPARATION
+    // END OF LOGO PREPARATION
+    // START OF CREDITS
 
-    $('#st-credits1').text(opening.credits1);
+    function generateCredits(element, text) {
+        $(element).text('');
+        var creditsLines = text.split('\n');
+        creditsLines.forEach((e)=>{
+            var creditsElement = $('<div></div>',{class:'credits-group-credit',
+                text:e,
+                'data-text':e});
+            $(element).append(creditsElement);
+        });
+    }
 
+    var credits = document.querySelectorAll('.credits-group');
+    var creditsFinal = document.querySelector('.credits-final');
+    for(var i=0;i<13;i++){
+        generateCredits(credits[i], opening['credits'+i]);
+    }
+    generateCredits(creditsFinal, opening['credits13']);
 };
 
 export default makeTheStrangerIntro;

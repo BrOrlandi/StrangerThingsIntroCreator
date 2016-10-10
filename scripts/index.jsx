@@ -7,7 +7,20 @@ import makeTheStrangerIntro from 'makeTheStrangerIntro';
 const defaultOpening = {
     logo: `STRANGER
 THINGS`,
-    credits1: "A NETFLIX ORIGINAL SERIES"
+    credits0: "A NETFLIX ORIGINAL SERIES",
+    credits1: "WINONA RYDER",
+    credits2: "DAVID HARBOUR",
+    credits3: "FINN WOLFHARD\nMILLIE BOBBY BROWN",
+    credits4: "GATEN MATARAZZO\nCALEB McLAUGHLIN",
+    credits5: "NATALIA DYER\nCHARLIE HEATON",
+    credits6: "CARA BUONO",
+    credits7: "And\nMATTHEW MODINE",
+    credits8: "Co-Executive Producer\nIAIN PATERSON",
+    credits9: "Executive Producer\nKARL GAJDUSEK",
+    credits10: "Executive Producers\nCINDY HOLLAND\nBRIAN WRIGHT\nMATT THUNELL",
+    credits11: "Executive Producers\nSHAWN LEVY\nDAN COHEN",
+    credits12: "Executive Producers\nTHE DUFFER BROTHERS",
+    credits13: "Created By\nTHE DUFFER BROTHERS"
 };
 
 class App extends React.Component {
@@ -115,10 +128,7 @@ class App extends React.Component {
         if(logo.indexOf('\n') == -1)
             logo += '\n';
 
-        var opening ={
-            logo: logo,
-            credits1: this.refs.credits1.value
-        };
+        var opening = this.state.opening;
 
         // TODO check limits, check 2 line only
 
@@ -143,6 +153,12 @@ class App extends React.Component {
 
     onClickMakeYourOwn = (e)=>{
         location.hash = "";
+    }
+
+    handleInputChange = (e)=>{
+        var opening = this.state.opening;
+        opening[e.target.name] = e.target.value;
+        this.setState(opening);
     }
 
     render(){
@@ -177,9 +193,14 @@ class App extends React.Component {
         var content;
         var opening = this.state.opening;
         if(this.state.editing && this.state.canPlay){
+            var creditsInputs = [];
+            for(var i=0;i<14;i++){
+                var key = "credits"+i;
+                creditsInputs.push(<textarea name={key} key={key} ref={key} rows="2" spellCheck="false" maxLength="300" value={opening[key]} onChange={this.handleInputChange}/>);
+            }
             content = <form id="stranger-form" onSubmit={this.submitStranger}>
                 <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="20" defaultValue={opening.logo} />
-                <textarea ref="credits1" rows="2" spellCheck="false" maxLength="100" defaultValue={opening.credits1} />
+                {creditsInputs}
                 {/* <input ref="credits1" spellCheck="false" maxLength="100" defaultValue="A NETFLIX ORIGINAL SERIES" type="text"/> */}
                   {notice}
                 <button className="playButton" type="submit">
