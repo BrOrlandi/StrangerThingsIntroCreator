@@ -1,3 +1,4 @@
+@import '~sweetalert2/dist/sweetalert2.min.css';
 @import "strangerintro";
 
 video.fullscreen {
@@ -24,14 +25,12 @@ body.overflow{
         font-size: 50px;
     }
 
-    $titlesColor: $color-title;
-
     input,textarea{
       resize: none;
       width: 100%;
       margin-bottom: 10px;
       padding: 0.25em;
-      border: 0.25em solid transparentize($titlesColor, 0.6);
+      border: 0.25em solid transparentize($color-title, 0.6);
       border-radius: 0.2em;
       background: black;
       transition: border-color 0.7s ease-out;
@@ -43,23 +42,23 @@ body.overflow{
       font-weight: 800;
 
       &:active, &:focus {
-        border-color: $titlesColor;
+        border-color: $color-title;
       }
 
       &#f-logo{
-          color: $titlesColor;
+          color: $color-title;
           font-family: $font-title;
           font-size: 50px;
           font-weight: normal;
           height: 125px;
           line-height: 86%;
-          border: 0.0666em solid transparentize($titlesColor, 0.6);
+          border: 0.0666em solid transparentize($color-title, 0.6);
           border-radius: 0.0533em;
           font-weight: normal;
           text-transform: uppercase;
 
           &:active, &:focus {
-            border-color: $titlesColor;
+            border-color: $color-title;
           }
       }
     }
@@ -70,7 +69,7 @@ body.overflow{
         font-size: 50px;
         border: 0;
         background: transparent;
-        color: $titlesColor;
+        color: $color-title;
         text-shadow: none;
         transition: text-shadow 0.5s ease-out;
         outline: none;
@@ -93,4 +92,31 @@ body.overflow{
 
 .hide{
     display: none;
+}
+
+.stranger-alert{
+    border: 2px solid $color-title;
+    h2, p{
+    color:  $color-title;
+    }
+
+    .swal2-content{
+        color: #cecece;
+    }
+
+    button{
+      border: 2px solid $color-title !important;
+      color: $color-title !important;
+      background-color: black !important;
+      &:focus{
+          outline: none;
+      }
+    }
+}
+
+.swal2-icon.swal2-error {
+    border-color: $color-title;
+    .line{
+        background-color: $color-title;
+    }
 }

@@ -3,6 +3,12 @@ import 'strangerScript';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import makeTheStrangerIntro from 'makeTheStrangerIntro';
+import swal from 'sweetalert2';
+
+swal.setDefaults({
+    background: 'black',
+    customClass: 'stranger-alert',
+});
 
 const defaultOpening = {
     logo: `STRANGER
@@ -44,7 +50,8 @@ class App extends React.Component {
               success: (opening) => {
                 this.unsetLoading();
                 if(opening == null){
-                    // TODO alert error not found
+                    swal("Oops...", "Opening not found!", "error");
+                    return;
                 }
                 makeTheStrangerIntro(opening);
                 if(autoPlay){
