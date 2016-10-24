@@ -93,8 +93,18 @@ const makeTheStrangerIntro = function(opening){
     toShow[0].find('span').text(firstChar);
     toShow[1].find('span').text(lastChar);
 
-    function parseWord(word, mappings,element){
-        var mapping = mappings[word.length];
+    function parseWord(word, mappings, element, extraChar, extraPos){
+        if(word.length > 10){ // will create extra characters mapping
+            var mapping = Object.assign([],mappings[10]);
+            var extraChars = [];
+            var qty = word.length - 10;
+            for(var i=0;i<qty;i++) {
+                extraChars.push(extraChar);
+            }
+            mapping.splice(extraPos,0,...extraChars);
+        }else{
+            var mapping = mappings[word.length];
+        }
         element.empty();
         for(var i in word){
             var letter = $('<span></span>',{class:'title-word-letter',
@@ -106,8 +116,8 @@ const makeTheStrangerIntro = function(opening){
     var firstWord = $('#firstWord');
     var secondWord = $('#secondWord');
 
-    parseWord(word1,word1Mapping,firstWord);
-    parseWord(word2,word2Mapping,secondWord);
+    parseWord(word1,word1Mapping,firstWord,'R1',1);
+    parseWord(word2,word2Mapping,secondWord,'I',3);
 
     var ln = letterNMapping[word1.length];
     $('#letterN').text(word1[ln]);

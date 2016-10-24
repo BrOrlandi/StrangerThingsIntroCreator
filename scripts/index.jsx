@@ -132,13 +132,19 @@ class App extends React.Component {
 
     submitStranger = (e)=>{
         e.preventDefault();
-        var logo = this.refs.logo.value.toUpperCase();
+        var logo = this.refs.logo.value.toUpperCase().trim();
 
         if(logo.indexOf('\n') == -1)
             logo += '\n';
 
         var opening = this.state.opening;
+        opening.logo = logo;
 
+        var aLogo = opening.logo.split('\n');
+        if(aLogo.length > 2){
+            swal("Oops...", "Logo can't have more than 2 lines.", "warning");
+            return;
+        }
         // TODO check limits, check 2 line only
 
         this.setLoading();
@@ -168,6 +174,12 @@ class App extends React.Component {
         var opening = this.state.opening;
         opening[e.target.name] = e.target.value;
         this.setState(opening);
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(this.state.opening.logo !== prevState.opening.logo){
+            this.refs.logo.value = this.state.opening.logo;
+        }
     }
 
     render(){
@@ -208,7 +220,7 @@ class App extends React.Component {
                 creditsInputs.push(<textarea name={key} key={key} ref={key} rows="2" spellCheck="false" maxLength="300" value={opening[key]} onChange={this.handleInputChange}/>);
             }
             content = <form id="stranger-form" onSubmit={this.submitStranger}>
-                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="20" defaultValue={opening.logo} />
+                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="27" defaultValue={opening.logo} />
                 {creditsInputs}
                 {/* <input ref="credits1" spellCheck="false" maxLength="100" defaultValue="A NETFLIX ORIGINAL SERIES" type="text"/> */}
                   {notice}
