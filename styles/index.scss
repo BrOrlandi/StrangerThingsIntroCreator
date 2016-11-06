@@ -142,3 +142,21 @@ body.overflow{
 // ::-webkit-scrollbar-thumb:window-inactive {
 // 	background: darken($color-title, 10);
 // }
+
+.footer{
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    color: $color-title;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    text-align: right;
+    width: 550px;
+    max-width: 30%;
+    font-size: 0.9em;
+
+    a{
+        color: $color-title;
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
