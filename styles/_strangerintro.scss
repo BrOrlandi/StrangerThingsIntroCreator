@@ -829,3 +829,12 @@ body {
     }
   }
 }
+
+.title-word--second{
+    .titlebar{
+        &--left,
+        &--right {
+          top: 0%;
+        }
+    }
+}
