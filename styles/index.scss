@@ -120,3 +120,25 @@ body.overflow{
         background-color: $color-title;
     }
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: darken($color-title, 10);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+// ::-webkit-scrollbar-thumb:window-inactive {
+// 	background: darken($color-title, 10);
+// }
