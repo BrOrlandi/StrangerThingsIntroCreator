@@ -159,4 +159,12 @@ body.overflow{
         font-weight: bold;
         text-decoration: none;
     }
+
+    #termsOfService{
+        font-size: 1.1em;
+        display: block;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 }
