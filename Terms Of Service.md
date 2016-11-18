@@ -1,4 +1,4 @@
-Last updated: November 6, 2016.
+Last updated: November 17, 2016.
 
 These Terms of Service ("Terms", "Terms of Service") refers to the Stranger Things Intro Creator website (brorlandi.github.io/StrangerThingsIntroCreator) (the "Service") operated by Bruno Orlandi and Nihey Takizawa ("us", "we", or "our").
 Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
@@ -18,7 +18,7 @@ The videos are rendered on a 1280 x 720 pixel resolution, thus, we do not guaran
 
 The videos are rendered in our servers and takes 50(TODO update this) minutes on average to be rendered. To deliver this feature for free we have a queue of videos to be rendered. You will be prompted to put your email in. Your email will be only used to send a link to download the video when it’s ready. We don’t send spam and we don’t share your email address with third parties.
 
-We are not responsible for any errors (typos, misspellings) made when rendering the video, the rendered video is reproduced exactly how it was received. Any fix(es) requested in a rendered text will be subject to the operators current availability.
+We are not responsible for any errors (typos, misspellings) made when rendering the video, the rendered video is reproduced exactly how it was received. Any fix(es) requested in a rendered text will be subject to our current availability.
 
 We cannot ensure the video will be properly delivered when it was caused by any issues that are beyond the domains of Stranger Things Intro Creator (misspelled email, user inbox is full, inactive user account,  the email service sent the video notification e-mail to spam).
 
@@ -30,11 +30,13 @@ Sharing the rendered video on services like Facebook and YouTube may violate cop
 
 Donations are used to maintain the video rendering servers up.
 
-As a reward for donors who donate at least 5 US Dollars we will provide the video before the entire queue. The donation must be in the exact value or greater than 5 US Dollars. Multiple donations that add up to the value of $ 5 will not be accepted to get the video earlier.
+As a reward for donors who donate at least 5 US Dollars we will provide the video before the entire queue. The donation must be in the exact value or greater than 5 US Dollars. Multiple donations that add up to the value of 5 US Dollars will not be accepted to get the video earlier.
 
 You must use the same email you have used in your PayPal account used to donate to ask for the video rendering. We are not responsible for misspelled emails, user inbox is full, inactivate user account and spam filters.
 
-Donators will generally get their video within 2-4 hours (TODO UPDATE THIS), but the time it takes for a given video to be ready may vary on how many video requests were made recently. You should receive an confirmation email about your donation and your video being processed, if not, contact us.
+Donators will generally get their video within 2-4 hours (TODO UPDATE THIS), but the time it takes for a given video to be ready may vary on how many video requests were made recently. You should receive a confirmation email about your donation and your video being processed, if not, contact us.
+
+Only donations made via the website buttons will be processed. If you make a donation directly to our PayPal account it will not be processed automatically, please contact us if it's the case.
 
 If you want to donate a greater value to get more videos, you can, contact us for further details.
 
