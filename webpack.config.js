@@ -8,6 +8,8 @@ var autoprefixer = require('autoprefixer');
 
 var cssExtractTextPlugin = new ExtractTextPlugin('[contenthash].css');
 
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: {
     'script': './scripts/index.jsx',
@@ -40,6 +42,7 @@ module.exports = {
   },
 
   plugins: [
+    new CopyWebpackPlugin([{from: './termsOfService.html'}]),
     cssExtractTextPlugin,
     new IndexHtmlPlugin('index.html', 'index.html'),
     new webpack.DefinePlugin({

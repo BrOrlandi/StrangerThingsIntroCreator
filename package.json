@@ -35,6 +35,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "config": "^1.16.0",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.23.0",
     "eslint": "^1.6.0",
     "extract-text-webpack-plugin": "^1.0.1",
