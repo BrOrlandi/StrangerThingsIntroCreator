@@ -269,6 +269,10 @@ $(window).on('hashchange', function() {
     ReactDOM.render(<App hash={key} edit={edit}/>, document.getElementById('react-body'));
 });
 
+var bg = require('../assets/bg.jpg');
+
 $(document).ready(function() {
+  var video = document.querySelector('#video');
+  video.setAttribute('poster',bg);
   window.dispatchEvent(new Event('hashchange'));
 });

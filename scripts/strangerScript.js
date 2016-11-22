@@ -1,5 +1,7 @@
 'use strict';
 
+var music = require("../assets/music.mp3");
+
 // Real quick add another modernizr check foooor...
 Modernizr.addTest('textstroke', function () {
   var h1 = document.createElement('h1');
