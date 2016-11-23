@@ -43,7 +43,8 @@ module.exports = {
 
   plugins: [
     new CopyWebpackPlugin([{from: './termsOfService.html'},
-        {from: './preview.png'}
+        {from: './preview.png'},
+        {from: './.nojekyll'}
 ]),
     cssExtractTextPlugin,
     new IndexHtmlPlugin('index.html', 'index.html'),
