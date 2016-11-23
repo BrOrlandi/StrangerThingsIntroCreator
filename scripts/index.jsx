@@ -248,15 +248,9 @@ class App extends React.Component {
         }
 
         return (
-            <div>
-                <div className="STIC">
-                    <h1 className="intro-title">STRANGER THINGS<br/>Intro Creator</h1>
-                    {content}
-                </div>
-                <div className="footer">
-                <a id="termsOfService" href="termsOfService.html">Terms of Service</a><br/>
-                <span style={{lineHeight: 1.2}}>Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> and <a href="https://github.com/nihey" target="2">Nihey Takizawa</a> based on <a href="http://wbobeirne.com/stranger-things/" target="2">William O'Beirne</a> work.</span>
-                </div>
+            <div className="STIC">
+                <h1 className="intro-title">STRANGER THINGS<br/>Intro Creator</h1>
+                {content}
             </div>
         );
     }

@@ -42,7 +42,9 @@ module.exports = {
   },
 
   plugins: [
-    new CopyWebpackPlugin([{from: './termsOfService.html'}]),
+    new CopyWebpackPlugin([{from: './termsOfService.html'},
+        {from: './preview.png'}
+]),
     cssExtractTextPlugin,
     new IndexHtmlPlugin('index.html', 'index.html'),
     new webpack.DefinePlugin({
