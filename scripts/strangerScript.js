@@ -1,6 +1,6 @@
 'use strict';
 
-var music = require("../assets/music.mp3");
+var musicPath = require("../assets/music.mp3");
 
 // Real quick add another modernizr check foooor...
 Modernizr.addTest('textstroke', function () {
@@ -15,7 +15,7 @@ Modernizr.addTest('textstroke', function () {
 // Fade out intro, start music and animation
 window.startStranger = function start() {
 
-  window.music = new Audio("./assets/music.mp3");
+  window.music = new Audio(musicPath);
 var ja = false;
   music.addEventListener("canplay", function () {
     setTimeout(function () {
