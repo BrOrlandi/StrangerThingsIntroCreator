@@ -4,10 +4,24 @@
     <title>Stranger Things Intro Creator</title>
     <meta charset="utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-    <link href="84eafba88857e5fd2e85d63beaf3fb31.png" rel="icon">
-    
+    <link rel="icon" sizes="16x16" href="2b764de98657a9a4854bb6bb47b8d907.png">
+    <link rel="icon" sizes="32x32" href="a6af832f2248ddcf5cbe362ab1c3c408.png">
 
-    <link href="0457fbe6887bbf97127a9a7bb605aa6a.css" rel="stylesheet">
+    <link href="e4fe4f32a2ddf79d913e161274461299.css" rel="stylesheet">
+
+    <meta name="application-name" content="Stranger Things Intro Creator">
+    <meta name="description" content="Create your own Stranger Things opening animation and video.">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="http://brorlandi.github.io/StrangerThingsIntroCreator/">
+    <meta property="og:title" content="Stranger Things Intro Creator">
+    <meta property="og:site_name" content="Stranger Things Intro Creator">
+    <meta property="og:description" content="Create your own Stranger Things opening animation and video.">
+    <meta property="og:image" content="http://brorlandi.github.io/StrangerThingsCreator/preview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:type" content="website">
+    <meta property="fb:app_id" content="172547513211360">
+
 
     <!-- Chrome mobile theme color -->
     <meta name="theme-color" content="#C11B1F">
@@ -16,16 +30,39 @@
     <!-- More info: https://developer.chrome.com/multidevice/android/installtohomescreen -->
   </head>
   <body class="overflow">
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8&appId=172547513211360";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
   <noscript style="color:white">
     The following demo requires javascript to run. Please enable it and
     refresh the browser.
   </noscript>
     <div id="config">
-        <video id="video" class="fullscreen" preload="auto" autoplay poster="/assets/bg.jpg" loop muted>
+        <video id="video" class="fullscreen" preload="auto" autoplay loop muted>
             <source src="https://player.vimeo.com/external/178812339.hd.mp4?s=bf1db383854643d8d92aac96a5bca01802122d46&amp;profile_id=174" type="video/mp4">
         </video>
         <div id="react-body"></div>
+        <div class="leftFooter">
+
+            <div class="fb-share-button" data-href="https://brorlandi.github.io/StrangerThingsIntroCreator/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbrorlandi.github.io%2FStrangerThingsIntroCreator%2F&amp;src=sdkpreparse">Share</a></div>
+            <div>
+                <a href="https://twitter.com/share" class="twitter-share-button" {count}="" data-text="Check out this Stranger Things Intro Creator!" data-hashtags="StrangerThings">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+            <div>
+                <iframe src="https://ghbtns.com/github-btn.html?user=BrOrlandi&amp;repo=StrangerThingsIntroCreator&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+            </div>
+        </div>
+        <div class="rightFooter">
+            <a id="termsOfService" href="termsOfService.html">Terms of Service</a><br>
+            <span style="line-height: 1.2">Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> and <a href="https://github.com/nihey" target="2">Nihey Takizawa</a> based on <a href="http://wbobeirne.com/stranger-things/" target="2">William O&apos;Beirne</a> work.</span>
+        </div>
     </div>
     <div id="StrangerIntro" class="hide">
 
