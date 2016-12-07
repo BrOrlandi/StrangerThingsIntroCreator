@@ -61,6 +61,9 @@ class App extends React.Component {
                }
             });
         }
+        ga('send', 'pageview', {
+            'page': location.pathname + location.search  + location.hash
+        });
     }
 
     playIntro = ()=>{
