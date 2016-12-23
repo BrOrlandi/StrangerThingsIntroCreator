@@ -129,6 +129,9 @@
 	                    }
 	                });
 	            }
+	            ga('send', 'pageview', {
+	                'page': location.pathname + location.search + location.hash
+	            });
 	        };
 
 	        _this.playIntro = function () {
