@@ -66,7 +66,7 @@ body.overflow{
     .playButton{
         font-family: $font-title;
         cursor: pointer;
-        font-size: 50px;
+        font-size: 60px;
         border: 0;
         background: transparent;
         color: $color-title;
@@ -75,8 +75,36 @@ body.overflow{
         outline: none;
 
         &:focus, &:hover {
-        text-shadow: -1px 1px 8px #ccc, 1px -1px 8px #ccc;
+            text-shadow: -1px 1px 8px #ccc, 1px -1px 8px #ccc;
         }
+    }
+
+    .downloadButton{
+        @extend .playButton;
+        animation: pulseDownload 3s ease 0s infinite;
+
+        &:focus, &:hover {
+            text-shadow: -1px 1px 8px #ccc, 1px -1px 8px #ccc;
+            animation: none;
+        }
+    }
+}
+
+@keyframes pulseDownload {
+    0%{
+        text-shadow: none;
+    }
+
+    40%{
+        text-shadow: -1px 1px 93px #ccc, 1px -1px 23px #ccc;
+    }
+
+    60%{
+        text-shadow: -1px 1px 93px #ccc, 1px -1px 23px #ccc;
+    }
+
+    100%{
+        text-shadow: none;
     }
 }
 
@@ -97,7 +125,51 @@ body.overflow{
 .stranger-alert{
     border: 2px solid $color-title;
     h2, p{
-    color:  $color-title;
+        color:  $color-title;
+    }
+
+    p{
+        text-align: justify;
+    }
+
+    h2{
+        font-family: BenguiatITCW01-BoldCn;
+    }
+
+    .swal2-validationerror{
+        background-color: black;
+        color: $color-title;
+
+        &::before{
+            background-color: $color-title;
+        }
+    }
+
+    input.swal2-input{
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 0.25em;
+      border: 0.25em solid transparentize($color-title, 0.6);
+      border-radius: 0.2em;
+      background: black;
+      transition: border-color 0.7s ease-out;
+      color: $color-title;
+      text-align: center;
+      outline: none;
+      font-family: $font-credits;
+      font-size: 1em;
+      font-weight: 800;
+
+      &:active, &:focus {
+        border: 0.25em solid $color-title;
+        box-shadow: none;
+      }
+    }
+
+    .email{
+        text-align: center; 
+        font-weight: bold;
+        color:  $color-title;
     }
 
     .swal2-content{
@@ -112,6 +184,16 @@ body.overflow{
           outline: none;
       }
     }
+
+    a{
+        color: #C11B1F;
+        font-weight:bold;
+        text-decoration: none;
+        &:hover,&:focus{
+            text-decoration: underline;
+        }
+    }
+
 }
 
 .swal2-icon.swal2-error {
@@ -182,4 +264,8 @@ body.overflow{
     form{
         margin-bottom: 5px;
     }
+}
+
+iframe{
+    border: none;
 }

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import makeTheStrangerIntro from 'makeTheStrangerIntro';
 import swal from 'sweetalert2';
+import downloadVideo from 'downloadVideo';
 
 swal.setDefaults({
     background: 'black',
@@ -38,6 +39,7 @@ class App extends React.Component {
             editing: false,
             loading: false,
             alreadyPlayed: false,
+            download: false,
             opening: defaultOpening
         }
     }
@@ -53,11 +55,13 @@ class App extends React.Component {
                     swal("Oops...", "Opening not found!", "error");
                     return;
                 }
+                $('[name=custom]').val(props.hash);
                 makeTheStrangerIntro(opening);
                 if(autoPlay){
                     this.playIntro();
                 }
-                this.setState({opening});
+                window.loadedOpening = {...opening};
+                this.setState({opening,download: true});
                }
             });
         }
@@ -173,6 +177,10 @@ class App extends React.Component {
         location.hash = "";
     }
 
+    onClickDownload = (e) => {
+        downloadVideo.apply(this);
+    }
+
     handleInputChange = (e)=>{
         var opening = this.state.opening;
         opening[e.target.name] = e.target.value;
@@ -180,7 +188,7 @@ class App extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        if(this.state.opening.logo !== prevState.opening.logo){
+        if(this.state.opening.logo !== prevState.opening.logo && this.refs.logo){
             this.refs.logo.value = this.state.opening.logo;
         }
     }
@@ -216,13 +224,20 @@ class App extends React.Component {
 
         var content;
         var opening = this.state.opening;
+
         if(this.state.editing && this.state.canPlay){
             var creditsInputs = [];
             for(var i=0;i<14;i++){
                 var key = "credits"+i;
                 creditsInputs.push(<textarea name={key} key={key} ref={key} rows="2" spellCheck="false" maxLength="300" value={opening[key]} onChange={this.handleInputChange}/>);
             }
+
+            var downloadButton = this.state.download ? <span><button className="downloadButton" type="button" onClick={this.onClickDownload}>
+                  DOWNLOAD
+                </button><br/><br/></span> : null;
+
             content = <form id="stranger-form" onSubmit={this.submitStranger}>
+                {downloadButton}
                 <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="27" defaultValue={opening.logo} />
                 {creditsInputs}
                 {/* <input ref="credits1" spellCheck="false" maxLength="100" defaultValue="A NETFLIX ORIGINAL SERIES" type="text"/> */}
