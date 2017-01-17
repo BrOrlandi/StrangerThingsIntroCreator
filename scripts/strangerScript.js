@@ -34,8 +34,9 @@ var ja = false;
 // Kick off the animation
 function startAnimation() {
   // In milliseconds, how long each one is
-  var creditsMs = 3000;
-  var scenesMs = [creditsMs, creditsMs * 2, creditsMs, creditsMs, creditsMs, creditsMs, creditsMs * 2, 19500];
+  var TIME_FACTOR = 0.1
+  var creditsMs = 3000 * TIME_FACTOR;
+  var scenesMs = [creditsMs, creditsMs * 2, creditsMs, creditsMs, creditsMs, creditsMs, creditsMs * 2, 19500 * TIME_FACTOR];
   // var scenesMs = [0, 0, 0, 0, 0, 0, 0, 1000];
 
   // Elements
@@ -94,7 +95,7 @@ function startAnimation() {
       // Show the final credits
       setTimeout(function () {
         finalCredit.className += " credits-group--show"; // comment this line to hide credits
-      }, offset + scenesMs[_i + 1] + 1500);
+      }, offset + scenesMs[_i + 1] + (1500 * TIME_FACTOR));
     }
   };
 

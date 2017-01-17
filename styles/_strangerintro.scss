@@ -1,4 +1,6 @@
 // Variables
+$TIME-FACTOR: 1;
+
 $desired-ratio-y: 9;
 $desired-ratio-x: 16;
 $desired-ratio: #{$desired-ratio-x} / #{$desired-ratio-y};
@@ -28,7 +30,7 @@ $titlebar-radius: 0.1vmin;
 $credits-fsize: 6vmin;
 $credits-fsize-small: 4.6vmin;
 $credits-margin: 0vmin;
-$credits-speed: 3000ms;
+$credits-speed: 3000ms * $TIME-FACTOR;
 $credits-link-size: 12vmin;
 $credits-link-margin: 5vmin;
 $credits-shadow-offset: 0.3vmin;
@@ -312,8 +314,8 @@ body {
     &--show {
       opacity: 1;
       transition-delay: $credits-speed * 0.1;
-      animation: credits-wiggle 200ms infinite $credits-speed * 0.1,
-                 credits-flash 2200ms infinite $credits-speed * 0.1;
+      animation: credits-wiggle (200ms * $TIME-FACTOR) infinite $credits-speed * 0.1,
+                 credits-flash (2200ms * $TIME-FACTOR) infinite $credits-speed * 0.1;
     }
   }
 
@@ -402,7 +404,7 @@ body {
   height: 200vh;
   width: 200vw;
   background: url("../assets/grain.png");
-  animation: grain-wiggle 5s steps(10) infinite;
+  animation: grain-wiggle (5s * $TIME-FACTOR) steps(10) infinite;
   pointer-events: none;
 }
 
@@ -511,7 +513,7 @@ body {
 
     @include letter("A", 60) {
       @include centerize;
-      animation: scene1 7000ms ease-out forwards;
+      animation: scene1 (7000ms * $TIME-FACTOR) ease-out forwards;
       transform-origin: 43.85% 40%;
     }
   }
@@ -527,11 +529,11 @@ body {
     }
 
     .title-word {
-      animation: scene2-word 3000ms linear forwards;
+      animation: scene2-word (3000ms * $TIME-FACTOR) linear forwards;
     }
 
     @include letter("N", 20) {
-      animation: scene2-letter 3000ms linear forwards;
+      animation: scene2-letter (3000ms * $TIME-FACTOR) linear forwards;
       transform-origin: 68.4% 40%;
     }
   }
@@ -548,12 +550,12 @@ body {
 
     @include letter("R", 23) {
       @include centerize;
-      animation: scene3-r 3000ms linear forwards;
+      animation: scene3-r (3000ms * $TIME-FACTOR) linear forwards;
       transform-origin: 75% 27%;
     }
     @include letter("I", 23) {
       @include centerize;
-      animation: scene3-i 3000ms linear forwards;
+      animation: scene3-i (3000ms * $TIME-FACTOR) linear forwards;
     }
   }
 
@@ -572,16 +574,16 @@ body {
     }
 
     .title-word {
-      animation: scene4-word 3000ms linear forwards;
+      animation: scene4-word (3000ms * $TIME-FACTOR) linear forwards;
     }
 
     @include letter("S", 18) {
       @include centerize;
-      animation: scene4-s 3000ms linear forwards;
+      animation: scene4-s (3000ms * $TIME-FACTOR) linear forwards;
     }
     @include letter("G", 18) {
       @include centerize;
-      animation: scene4-g 3000ms linear forwards;
+      animation: scene4-g (3000ms * $TIME-FACTOR) linear forwards;
     }
   }
 
@@ -597,11 +599,11 @@ body {
 
     @include letter("R", 14) {
       @include centerize;
-      animation: scene5-r 3000ms linear forwards;
+      animation: scene5-r (3000ms * $TIME-FACTOR) linear forwards;
     }
     @include letter("S", 14) {
       @include centerize;
-      animation: scene5-s 3000ms linear forwards;
+      animation: scene5-s (3000ms * $TIME-FACTOR) linear forwards;
     }
   }
 
@@ -642,34 +644,34 @@ body {
 
     @include letter("I", 8) {
       @include centerize;
-      animation: scene6-i        6000ms linear forwards,
-                 scene6-fade-out 6000ms linear forwards;
+      animation: scene6-i        (6000ms * $TIME-FACTOR) linear forwards,
+                 scene6-fade-out (6000ms * $TIME-FACTOR) linear forwards;
     }
     @include letter("A", 8) {
       @include centerize;
-      animation: scene6-a        6000ms linear forwards,
-                 scene6-fade-out 6000ms linear forwards;
+      animation: scene6-a        (6000ms * $TIME-FACTOR) linear forwards,
+                 scene6-fade-out (6000ms * $TIME-FACTOR) linear forwards;
     }
     @include letter("T", 8) {
       @include centerize;
-      animation: scene6-t        6000ms linear forwards,
-                 scene6-fade-out 6000ms linear forwards;
+      animation: scene6-t        (6000ms * $TIME-FACTOR) linear forwards,
+                 scene6-fade-out (6000ms * $TIME-FACTOR) linear forwards;
     }
     @include letter("H", 8) {
       @include centerize;
-      animation: scene6-h        6000ms linear forwards,
-                 scene6-fade-out 6000ms linear forwards;
+      animation: scene6-h        (6000ms * $TIME-FACTOR) linear forwards,
+                 scene6-fade-out (6000ms * $TIME-FACTOR) linear forwards;
     }
 
     @include letter("N", 3) {
       @include centerize;
-      animation: scene6-n       6000ms linear forwards,
-                 scene6-fade-in 6000ms linear forwards;
+      animation: scene6-n       (6000ms * $TIME-FACTOR) linear forwards,
+                 scene6-fade-in (6000ms * $TIME-FACTOR) linear forwards;
     }
     @include letter("G", 3) {
       @include centerize;
-      animation: scene6-g       6000ms linear forwards,
-                 scene6-fade-in 6000ms linear forwards;
+      animation: scene6-g       (6000ms * $TIME-FACTOR) linear forwards,
+                 scene6-fade-in (6000ms * $TIME-FACTOR) linear forwards;
     }
   }
 
@@ -757,66 +759,66 @@ body {
     }
 
     width: 1000vw;
-    animation: full-title 20s cubic-bezier(0.15, 0.7, 0.26, 0.88) forwards;
+    animation: full-title (20s * $TIME-FACTOR) cubic-bezier(0.15, 0.7, 0.26, 0.88) forwards;
     transform-origin: 50% 45%;
 
     @include letter(null, 10);
     @include letter("S1") {
-      animation: full-s1 20s ease forwards;
+      animation: full-s1 (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("T1") {
-      animation: full-t1 20s ease forwards;
+      animation: full-t1 (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("R1") {
-      animation: full-r1 20s ease forwards;
+      animation: full-r1 (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("A") {
-      animation: full-a 20s ease forwards;
+      animation: full-a (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("N1") {
       letter-spacing: -15vmin;
-      animation: full-n1 20s ease forwards;
+      animation: full-n1 (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("G1") {
-      animation: full-g1 20s ease forwards;
+      animation: full-g1 (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("E") {
-      animation: full-e 20s ease forwards;
+      animation: full-e (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("R2") {
-      animation: full-r2 20s ease forwards;
+      animation: full-r2 (20s * $TIME-FACTOR) ease forwards;
     }
 
     @include letter("T2") {
-      animation: full-t2 20s ease forwards;
+      animation: full-t2 (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("H") {
-      animation: full-h 20s ease forwards;
+      animation: full-h (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("I") {
-      animation: full-i 20s ease forwards;
+      animation: full-i (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("N2") {
       letter-spacing: -15vmin;
-      animation: full-n2 20s ease forwards;
+      animation: full-n2 (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("G2") {
-      animation: full-g2 20s ease forwards;
+      animation: full-g2 (20s * $TIME-FACTOR) ease forwards;
     }
     @include letter("S2") {
-      animation: full-s2 20s ease forwards;
+      animation: full-s2 (20s * $TIME-FACTOR) ease forwards;
     }
 
     .titlebar {
       @include scaled-bar(10);
 
       &--top {
-        animation: full-bar-top 20s ease forwards;
+        animation: full-bar-top (20s * $TIME-FACTOR) ease forwards;
       }
 
       &--left,
       &--right {
-        animation: full-bar-side 20s ease forwards;
+        animation: full-bar-side (20s * $TIME-FACTOR) ease forwards;
       }
 
       &--left {
