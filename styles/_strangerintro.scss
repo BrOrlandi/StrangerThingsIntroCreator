@@ -1,5 +1,5 @@
 // Variables
-$TIME-FACTOR: 1;
+$TIME-FACTOR: 0.1;
 
 $desired-ratio-y: 9;
 $desired-ratio-x: 16;
@@ -110,7 +110,7 @@ body {
   width: 100%;
   max-width: 440px;
   @include centerize;
-  transition: opacity 600ms ease, visibility 0ms linear 800ms;
+  transition: opacity (600ms * $TIME-FACTOR) ease, visibility 0ms linear (800ms * $TIME-FACTOR);
 
   &--hide {
     opacity: 0;
@@ -165,7 +165,7 @@ body {
       background: rgba(#555, 0.2);
       opacity: 0.3;
       border-radius: 100%;
-      transition: color 100ms ease, opacity 100ms ease;
+      transition: color (100ms * $TIME-FACTOR) ease, opacity (100ms * $TIME-FACTOR) ease;
       transform: translateZ(0);
 
       &:hover,

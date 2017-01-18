@@ -11,6 +11,11 @@ swal.setDefaults({
     customClass: 'stranger-alert',
 });
 
+var INTRO = null;
+window.playIntro = function(opening) {
+  INTRO = opening;
+};
+
 const defaultOpening = {
     logo: `STRANGER
 THINGS`,
@@ -44,30 +49,13 @@ class App extends React.Component {
         }
     }
 
-    checkHash = (props,autoPlay = false)=>{
-        if(props.hash){
-            var url = "https://strangerthingsintrocreator.firebaseio.com/openings/-"+props.hash + ".json";
-            $.ajax({
-              url: url,
-              success: (opening) => {
-                this.unsetLoading();
-                if(opening == null){
-                    swal("Oops...", "Opening not found!", "error");
-                    return;
-                }
-                $('[name=custom]').val(props.hash);
-                makeTheStrangerIntro(opening);
-                if(autoPlay){
-                    this.playIntro();
-                }
-                window.loadedOpening = {...opening};
-                this.setState({opening,download: true});
-               }
-            });
-        }
-        ga('send', 'pageview', {
-            'page': location.pathname + location.search  + location.hash
-        });
+    play(opening) {
+      $('body').css({display: 'block'});
+      this.unsetLoading();
+      makeTheStrangerIntro(opening);
+      this.playIntro();
+      window.loadedOpening = {...opening};
+      this.setState({opening,download: true});
     }
 
     playIntro = ()=>{
@@ -77,6 +65,7 @@ class App extends React.Component {
         $(window.music).bind('ended', (e)=>{
             this.setState({editing: true});
             stopStrangerIntro();
+            $('body').css({display: 'none'});
         });
 
     }
@@ -85,18 +74,6 @@ class App extends React.Component {
         if(this.state.alreadyPlayed != nextState.alreadyPlayed)
             return false;
         return true;
-    }
-
-    componentWillReceiveProps(props){
-        if(props.hash){
-            this.setState({
-                loading: true,
-                editing: false
-            });
-            this.checkHash(props,true);
-        }else{
-            location.reload(); // was seeing a intro before now needs to reload to go back to the home page.
-        }
     }
 
     componentWillMount(){
@@ -125,8 +102,6 @@ class App extends React.Component {
           state.canPlay = 'can';
         }
         this.setState(state);
-
-        this.checkHash(this.props);
     }
 
     setLoading(){
@@ -191,6 +166,19 @@ class App extends React.Component {
         if(this.state.opening.logo !== prevState.opening.logo && this.refs.logo){
             this.refs.logo.value = this.state.opening.logo;
         }
+    }
+
+    componentDidMount() {
+      $('body').css({display: 'none'});
+      let tryout = () => {
+        if (!INTRO) {
+          return setTimeout(tryout, 100);
+        }
+
+        this.play(INTRO);
+      };
+
+      tryout();
     }
 
     render(){
@@ -266,7 +254,7 @@ class App extends React.Component {
         }
 
         return (
-            <div className="STIC">
+            <div className={"STIC " + (this.state.loading ? 'hidden' : '')}>
                 <h1 className="intro-title">STRANGER THINGS<br/>Intro Creator</h1>
                 {content}
             </div>
@@ -288,3 +276,5 @@ $(document).ready(function() {
   video.setAttribute('poster',bg);
   window.dispatchEvent(new Event('hashchange'));
 });
+
+

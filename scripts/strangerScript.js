@@ -25,7 +25,7 @@ var ja = false;
         //   music.currentTime = 27;
         //   ja = true;
         // }
-        music.play();
+        // music.play();
       }, 200);
     }, 1500);
   });
