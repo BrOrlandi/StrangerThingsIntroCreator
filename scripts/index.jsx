@@ -152,7 +152,6 @@ class App extends React.Component {
             swal("Oops...", "Logo can't have more than 2 lines.", "warning");
             return;
         }
-        // TODO check limits, check 2 line only
 
         this.setLoading();
         $.ajax({

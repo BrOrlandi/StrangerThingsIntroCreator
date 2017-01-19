@@ -26,14 +26,13 @@ const calcTime = function(queue){
 const requestVideo = function(donate,key, email){
     if(email === false) return false;
 
-    // var url = "https://endor.nihey.org/request?code="+ key +"&email=" + email;
-    // $.ajax({
-    //     url: url,
-    //     type: 'GET',
-    //     crossDomain: true,
-    //     success: function(data){
-            // var queue = data.queue;
-            var queue = 1000;
+    var url = "https://upsidedown.nihey.org/api/video/"+ key +"&user=" + email;
+    $.ajax({
+        url: url,
+        type: 'GET',
+        crossDomain: true,
+        success: function(data){
+            var queue = data.queue;
             swal({
                 title: '<h2>Video Request Sent</h2>',
                 html:'<p>'+
@@ -52,8 +51,8 @@ const requestVideo = function(donate,key, email){
               ) +
               '<p style="margin-top: 15px;">By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.</p>'
             });
-    //     }
-    // });
+        }
+    });
 };
 
 export default function downloadVideo(){
@@ -82,7 +81,7 @@ export default function downloadVideo(){
         // check if download is available:
 
         $.ajax({
-            url: "https://endor.nihey.org/status?code="+OpeningKey, // TODO set URL
+            url: "https://upsidedown.nihey.org/status?code="+OpeningKey,
             crossDomain: true,
             success: (data) => {
                 var queue = data.queue;
