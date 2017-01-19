@@ -114,8 +114,8 @@ export default function downloadVideo(){
                         'We want to provide videos for free, but we have to use a server to render it, which costs money.<br>'+
                         'There are <b>'+(queue+1)+' videos</b> in front of you and it will take <b>'+calcTime(queue)+'</b> to be processed.<br>'+
                         'Can\'t wait for it? Donate at least <b>5 dollars</b>, you will jump the queue and your video will be ready in few hours.<br>'+
-                        'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
-                        '<a href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>. '+ // TODO update link
+                        'The video will be rendered in Full HD quality and MP4 file. To see a sample video click '+
+                        '<a href="https://youtu.be/Q0eEXKyA540" target="_blank">here</a>. '+
                         'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.<br>'+
                         'By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.'+
                         '</p>',
@@ -138,7 +138,7 @@ export default function downloadVideo(){
                             
                      generateAlert.title = '<h2>Donate</h2>';
                      generateAlert.html = '<p>Click on the button bellow:</p>'
-                            +'<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="130"></iframe>'+generateAlert.html+donateText;
+                            +'<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="135"></iframe>'+generateAlert.html+donateText;
                     
                     swal(generateAlert).then(requestVideo.bind(window, true, OpeningKey));
                 },(_cancel_) => {

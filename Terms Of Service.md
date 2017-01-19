@@ -1,4 +1,4 @@
-Last updated: December 23, 2016.
+Last updated: January 19, 2018.
 
 These Terms of Service ("Terms", "Terms of Service") refers to the Stranger Things Intro Creator website (brorlandi.github.io/StrangerThingsIntroCreator) (the "Service") operated by Bruno Orlandi and Nihey Takizawa ("us", "we", or "our").
 Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
@@ -13,11 +13,10 @@ The content published in the service is registered by a unique key available in 
 
 #### About Download Videos
 
-The videos are rendered on a 1280 x 720 pixel resolution, thus, we do not guarantee that the rendered videos are identical to the creations in this service. The quality may differ depending on the device on which the content is displayed. You can see a sample of the video rendered here:
-// TODO LINK
-[https://www.youtube.com/watch?v=IQf8AN07T_E](https://www.youtube.com/watch?v=IQf8AN07T_E)
+The videos are rendered on a 1920 x 1080 pixel resolution, thus, we do not guarantee that the rendered videos are identical to the creations in this service. The quality may differ depending on the device on which the content is displayed. You can see a sample of the video rendered here:
+[https://youtu.be/Q0eEXKyA540](https://youtu.be/Q0eEXKyA540)
 
-The videos are rendered in our servers and takes 50(TODO update this) minutes on average to be rendered. To deliver this feature for free we have a queue of videos to be rendered. You will be prompted to put your email in. Your email will be only used to send a link to download the video when it’s ready. We don’t send spam and we don’t share your email address with third parties.
+The videos are rendered in our servers and takes 50 minutes on average to be rendered. To deliver this feature for free we have a queue of videos to be rendered. You will be prompted to put your email in. Your email will be only used to send a link to download the video when it’s ready. We don’t send spam and we don’t share your email address with third parties.
 
 We are not responsible for any errors (typos, misspellings) made when rendering the video, the rendered video is reproduced exactly how it was received. Any fix(es) requested in a rendered text will be subject to our current availability.
 
@@ -35,7 +34,7 @@ As a reward for donors who donate at least 5 US Dollars we will provide the vide
 
 You must use the same email you have used in your PayPal account used to donate to ask for the video rendering. We are not responsible for misspelled emails, user inbox is full, inactivate user account and spam filters.
 
-Donators will generally get their video within 2-4 hours (TODO UPDATE THIS), but the time it takes for a given video to be ready may vary on how many video requests were made recently. You should receive a confirmation email about your donation and your video being processed, if not, contact us.
+Donators will generally get their video within 1-4 hours, but the time it takes for a given video to be ready may vary on how many video requests were made recently. You should receive a confirmation email about your donation and your video being processed, if not, contact us.
 
 Only donations made via the website buttons will be processed. If you make a donation directly to our PayPal account it will not be processed automatically, please contact us if it's the case.
 
