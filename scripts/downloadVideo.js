@@ -26,7 +26,7 @@ const calcTime = function(queue){
 const requestVideo = function(donate,key, email){
     if(email === false) return false;
 
-    var url = "https://upsidedown.nihey.org/api/video/"+ key +"&user=" + email;
+    var url = "https://upsidedown.nihey.org/request?code="+ key +"&email=" + email;
     $.ajax({
         url: url,
         type: 'GET',
@@ -138,7 +138,7 @@ export default function downloadVideo(){
                             
                      generateAlert.title = '<h2>Donate</h2>';
                      generateAlert.html = '<p>Click on the button bellow:</p>'
-                            +'<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="100"></iframe>'+generateAlert.html+donateText;
+                            +'<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="130"></iframe>'+generateAlert.html+donateText;
                     
                     swal(generateAlert).then(requestVideo.bind(window, true, OpeningKey));
                 },(_cancel_) => {
