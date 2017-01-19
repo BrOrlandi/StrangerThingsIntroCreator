@@ -33935,7 +33935,7 @@
 	var requestVideo = function requestVideo(donate, key, email) {
 	    if (email === false) return false;
 
-	    var url = "https://upsidedown.nihey.org/api/video/" + key + "&user=" + email;
+	    var url = "https://upsidedown.nihey.org/request?code=" + key + "&email=" + email;
 	    $.ajax({
 	        url: url,
 	        type: 'GET',
@@ -34013,7 +34013,7 @@
 	                var donateText = ['<p>', '  Please, use the same email from you PayPal account.', "  You'll be able to add as many e-mails as you want to", '  <b>this video</b> without having to donate again. Just add', '  your other emails after the first one, without donating.', '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.', '  By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.', '</p>'].join('');
 
 	                generateAlert.title = '<h2>Donate</h2>';
-	                generateAlert.html = '<p>Click on the button bellow:</p>' + '<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="100"></iframe>' + generateAlert.html + donateText;
+	                generateAlert.html = '<p>Click on the button bellow:</p>' + '<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="130"></iframe>' + generateAlert.html + donateText;
 
 	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, true, OpeningKey));
 	            }, function (_cancel_) {
