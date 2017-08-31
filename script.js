@@ -72,6 +72,10 @@
 
 	var _downloadVideo2 = _interopRequireDefault(_downloadVideo);
 
+	var _errorFunction = __webpack_require__(196);
+
+	var _errorFunction2 = _interopRequireDefault(_errorFunction);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -134,7 +138,8 @@
 	                        }
 	                        window.loadedOpening = _extends({}, opening);
 	                        _this.setState({ opening: opening, download: true });
-	                    }
+	                    },
+	                    error: (0, _errorFunction2.default)('Error when try to load the intro ' + props.hash)
 	                });
 	            }
 	            ga('send', 'pageview', {
@@ -177,7 +182,8 @@
 	                    var key = data.name.substring(1);
 	                    // CreatedIntros.save(key,opening);
 	                    location.hash = '!/' + key;
-	                }
+	                },
+	                error: (0, _errorFunction2.default)('Error when creating the intro.')
 	            });
 	        };
 
@@ -407,7 +413,7 @@
 	    _reactDom2.default.render(_react2.default.createElement(App, { hash: key, edit: edit }), document.getElementById('react-body'));
 	});
 
-	var bg = __webpack_require__(196);
+	var bg = __webpack_require__(197);
 
 	$(document).ready(function () {
 	    var video = document.querySelector('#video');
@@ -33908,6 +33914,10 @@
 
 	var _sweetalert2 = _interopRequireDefault(_sweetalert);
 
+	var _errorFunction = __webpack_require__(196);
+
+	var _errorFunction2 = _interopRequireDefault(_errorFunction);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var $ = __webpack_require__(193);
@@ -33947,7 +33957,8 @@
 	                title: '<h2>Video Request Sent</h2>',
 	                html: '<p>' + 'Your video has been queued. Your current position on the queue is <b>' + (queue + 1) + '</b>, which will take up to <b>' + calcTime(queue) + '</b>.<br>' + 'The link to download the video will be sent to the e-mail:<br>' + '</p><span class="email">' + email + '</span>' + (donate ? '<p style="margin-top: 15px;">But as you donated, we will bump you up on the queue.' + '  Thank you so much for supporting us! You should receive the confirmation email within a few minutes.' + '</p>' : '') + '<p style="margin-top: 15px;">By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.</p>'
 	            });
-	        }
+	        },
+	        error: (0, _errorFunction2.default)('Error when request video download.')
 	    });
 	};
 
@@ -34019,13 +34030,42 @@
 	            }, function (_cancel_) {
 	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, false, OpeningKey));
 	            });
-	        }
-
+	        },
+	        error: (0, _errorFunction2.default)('Error when request video information to download.')
 	    });
 	};
 
 /***/ },
 /* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = ajaxErrorFunction;
+
+	var _sweetalert = __webpack_require__(194);
+
+	var _sweetalert2 = _interopRequireDefault(_sweetalert);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function ajaxErrorFunction(bodyMessage) {
+	  var body = encodeURI("Hi, the website didn't work as expected. \n\n" + bodyMessage);
+	  return function () {
+	    (0, _sweetalert2.default)({
+	      title: '<h2 style="font-family: BenguiatITCW01-BoldCn;">An error has occured</h2>',
+	      html: '<p style="text-align: left">Something went wrong! Sorry about that! Please try again, if this error repeats please contact us: : ' + '<br><a style="color: #C11B1F;" href="mailto:brorlandi@gmail.com,nihey.takizawa@gmail.com?Subject=STIC%20Problem&Body=' + body + '" target="_blank">brorlandi@gmail.com<br> nihey.takizawa@gmail.com</a></p>',
+	      type: "error",
+	      confirmButtonText: "Ok"
+	    });
+	  };
+	}
+
+/***/ },
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c9566bf08c5703c8276c3675110c71b6.jpg";
