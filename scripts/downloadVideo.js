@@ -1,6 +1,7 @@
 const $ = require('jquery');
 
 import swal from 'sweetalert2';
+import ajaxErrorFunction from 'errorFunction';
 
 const calcTime = function(queue){
     let minutes = (queue+1)*50;
@@ -51,7 +52,8 @@ const requestVideo = function(donate,key, email){
               ) +
               '<p style="margin-top: 15px;">By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.</p>'
             });
-        }
+        },
+        error: ajaxErrorFunction('Error when request video download.')
     });
 };
 
@@ -144,8 +146,7 @@ export default function downloadVideo(){
                 },(_cancel_) => {
                     swal(generateAlert).then(requestVideo.bind(window, false, OpeningKey));
                 });
-
-            }
-
+            },
+            error: ajaxErrorFunction('Error when request video information to download.')
         });
 };

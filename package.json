@@ -7,6 +7,7 @@
     "build": "webpack",
     "watch": "webpack -d --watch",
     "dev": "webpack-dev-server -d",
+    "start": "webpack-dev-server -d",
     "production": "NODE_ENV=production webpack -p",
     "test": "eslint . && webpack -d && webpack -p"
   },

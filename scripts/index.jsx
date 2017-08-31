@@ -5,6 +5,7 @@ import React from 'react';
 import makeTheStrangerIntro from 'makeTheStrangerIntro';
 import swal from 'sweetalert2';
 import downloadVideo from 'downloadVideo';
+import ajaxErrorFunction from 'errorFunction';
 
 swal.setDefaults({
     background: 'black',
@@ -62,7 +63,8 @@ class App extends React.Component {
                 }
                 window.loadedOpening = {...opening};
                 this.setState({opening,download: true});
-               }
+               },
+                error: ajaxErrorFunction('Error when try to load the intro '+props.hash)
             });
         }
         ga('send', 'pageview', {
@@ -163,7 +165,8 @@ class App extends React.Component {
                 var key = data.name.substring(1);
                 // CreatedIntros.save(key,opening);
                 location.hash = '!/'+key;
-            }
+            },
+            error: ajaxErrorFunction('Error when creating the intro.')
         });
     }
 
