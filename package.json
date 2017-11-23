@@ -47,7 +47,7 @@
     "json-loader": "^0.5.2",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
-    "node-sass": "^3.7.0",
+    "node-sass": "^3.13.1",
     "postcss": "^5.2.0",
     "postcss-cli": "^2.6.0",
     "postcss-import": "^8.1.2",

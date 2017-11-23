@@ -6,6 +6,7 @@ import makeTheStrangerIntro from 'makeTheStrangerIntro';
 import swal from 'sweetalert2';
 import downloadVideo from 'downloadVideo';
 import ajaxErrorFunction from 'errorFunction';
+import { postUrl, getUrl } from './urls';
 
 swal.setDefaults({
     background: 'black',
@@ -47,7 +48,7 @@ class App extends React.Component {
 
     checkHash = (props,autoPlay = false)=>{
         if(props.hash){
-            var url = "https://strangerthingsintrocreator.firebaseio.com/openings/-"+props.hash + ".json";
+            var url = getUrl(props.hash);
             $.ajax({
               url: url,
               success: (opening) => {
@@ -157,12 +158,12 @@ class App extends React.Component {
 
         this.setLoading();
         $.ajax({
-            url: "https://strangerthingsintrocreator.firebaseio.com/openings.json",
+            url: postUrl(),
             method: "POST",
             data: JSON.stringify(opening),
             dataType: "json",
             success: (data)=>{
-                var key = data.name.substring(1);
+                var key = 'A'+data.name.substring(1);
                 // CreatedIntros.save(key,opening);
                 location.hash = '!/'+key;
             },
