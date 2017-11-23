@@ -76,6 +76,8 @@
 
 	var _errorFunction2 = _interopRequireDefault(_errorFunction);
 
+	var _urls = __webpack_require__(197);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -122,7 +124,7 @@
 	            var autoPlay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
 	            if (props.hash) {
-	                var url = "https://strangerthingsintrocreator.firebaseio.com/openings/-" + props.hash + ".json";
+	                var url = (0, _urls.getUrl)(props.hash);
 	                $.ajax({
 	                    url: url,
 	                    success: function success(opening) {
@@ -174,12 +176,12 @@
 
 	            _this.setLoading();
 	            $.ajax({
-	                url: "https://strangerthingsintrocreator.firebaseio.com/openings.json",
+	                url: (0, _urls.postUrl)(),
 	                method: "POST",
 	                data: JSON.stringify(opening),
 	                dataType: "json",
 	                success: function success(data) {
-	                    var key = data.name.substring(1);
+	                    var key = 'A' + data.name.substring(1);
 	                    // CreatedIntros.save(key,opening);
 	                    location.hash = '!/' + key;
 	                },
@@ -413,7 +415,7 @@
 	    _reactDom2.default.render(_react2.default.createElement(App, { hash: key, edit: edit }), document.getElementById('react-body'));
 	});
 
-	var bg = __webpack_require__(197);
+	var bg = __webpack_require__(198);
 
 	$(document).ready(function () {
 	    var video = document.querySelector('#video');
@@ -34066,6 +34068,31 @@
 
 /***/ },
 /* 197 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var postUrl = exports.postUrl = function postUrl() {
+	  // return 'https://strangerthingsintrocreator.firebaseio.com/openings.json';
+	  return 'https://strangerthingsic-a.firebaseio.com/openings.json';
+	};
+
+	var getUrl = exports.getUrl = function getUrl(key) {
+	  var code = key;
+	  var id = key.charAt(0);
+	  if (id === "A") {
+	    code = key.substr(1);
+	    return "https://strangerthingsic-a.firebaseio.com/openings/-" + code + ".json";
+	  } else {
+	    return "https://strangerthingsintrocreator.firebaseio.com/openings/-" + code + ".json";
+	  }
+	};
+
+/***/ },
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "c9566bf08c5703c8276c3675110c71b6.jpg";
