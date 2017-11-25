@@ -7,6 +7,7 @@ import swal from 'sweetalert2';
 import downloadVideo from 'downloadVideo';
 import ajaxErrorFunction from 'errorFunction';
 import { postUrl, getUrl } from './urls';
+import './bitcoinEther';
 
 swal.setDefaults({
     background: 'black',

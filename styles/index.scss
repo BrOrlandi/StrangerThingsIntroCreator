@@ -225,16 +225,32 @@ body.overflow{
 // 	background: darken($color-title, 10);
 // }
 
-.rightFooter{
+.footerText{
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, sans-serif;
     color: $color-title;
-    position: fixed;
     bottom: 10px;
-    right: 10px;
-    text-align: right;
     width: 550px;
     max-width: 30%;
     font-size: 0.9em;
+
+    &#btcether {
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        font-weight: bold;
+        display: flex;
+        line-height: 25px;
+        span {
+            margin-left: 5px;
+        }
+    }
+
+    &.right{
+        position: fixed;
+        right: 10px;
+        text-align: right;
+    }
 
     a{
         color: $color-title;
