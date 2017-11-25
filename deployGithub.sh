@@ -4,7 +4,7 @@ if [[ $# -eq 0 ]] ; then
     exit 1
 fi
 
-#git checkout master
+git checkout master
 npm run build
 git checkout gh-pages
 git pull
@@ -13,4 +13,4 @@ mv dist/.* ./
 git add .
 git commit -m "$1"
 git push
-#git checkout master
+git checkout master
