@@ -5,9 +5,9 @@ $desired-ratio: #{$desired-ratio-x} / #{$desired-ratio-y};
 $desired-ratio-multiplier: $desired-ratio-y / $desired-ratio-x;
 
 $color-bg: #000;
-$color-title: #C11B1F;
-$color-credits: #A8A6A7;
-$color-credits-top: #B2B0B1;
+$color-title: #cc0000;
+$color-credits: white;
+$color-credits-top: white;
 $color-credits-bottom: $color-credits;
 
 $font-title: 'BenguiatITCW01-BoldCn';
@@ -381,7 +381,7 @@ body {
   }
 }
 
-.grain {
+.grainx {
   @keyframes grain-wiggle {
     0%  { transform: translateX(8%)   translateY(-5%);  }
     10% { transform: translateX(0%)   translateY(0%);   }
