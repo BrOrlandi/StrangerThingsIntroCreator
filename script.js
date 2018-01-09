@@ -34010,7 +34010,7 @@
 
 	            var generateAlert = {
 	                title: '<h2>Video Download</h2>',
-	                html: '<p>' + 'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready' + '</p>',
+	                html: '<p>' + 'Type your email below and you will receive a message with the URL to download your video when it\'s ready' + '</p>',
 	                input: 'email',
 	                showCancelButton: true,
 	                inputPlaceholder: "Your e-mail...",
@@ -34029,7 +34029,7 @@
 	                var donateText = ['<p>', '  Please, use the same email from you PayPal account.', "  You'll be able to add as many e-mails as you want to", '  <b>this video</b> without having to donate again. Just add', '  your other emails after the first one, without donating.', '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.', '  By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.', '</p>'].join('');
 
 	                generateAlert.title = '<h2>Donate</h2>';
-	                generateAlert.html = '<p>Click on the button bellow:</p>' + '<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="135"></iframe>' + generateAlert.html + donateText;
+	                generateAlert.html = '<p>Click on the button below:</p>' + '<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="135"></iframe>' + generateAlert.html + donateText;
 
 	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, true, OpeningKey));
 	            }, function (_cancel_) {
