@@ -102,7 +102,7 @@ export default function downloadVideo(){
                 var generateAlert = {
                     title: '<h2>Video Download</h2>',
                     html: '<p>'+
-                    'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready'+
+                    'Type your email below and you will receive a message with the URL to download your video when it\'s ready'+
                     '</p>',
                     input: 'email',
                     showCancelButton: true,
@@ -137,11 +137,11 @@ export default function downloadVideo(){
                               '  By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.',
                               '</p>'
                             ].join('');
-                            
+
                      generateAlert.title = '<h2>Donate</h2>';
-                     generateAlert.html = '<p>Click on the button bellow:</p>'
+                     generateAlert.html = '<p>Click on the button below:</p>'
                             +'<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="135"></iframe>'+generateAlert.html+donateText;
-                    
+
                     swal(generateAlert).then(requestVideo.bind(window, true, OpeningKey));
                 },(_cancel_) => {
                     swal(generateAlert).then(requestVideo.bind(window, false, OpeningKey));
