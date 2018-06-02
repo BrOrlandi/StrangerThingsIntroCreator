@@ -230,7 +230,6 @@ body.overflow{
     color: $color-title;
     bottom: 10px;
     width: 550px;
-    max-width: 30%;
     font-size: 0.9em;
 
     &#btcether {
@@ -238,6 +237,7 @@ body.overflow{
             text-decoration: underline;
             cursor: pointer;
         }
+        width: 140px;
         font-weight: bold;
         display: flex;
         line-height: 25px;
@@ -250,6 +250,7 @@ body.overflow{
         position: fixed;
         right: 10px;
         text-align: right;
+        max-width: 30%;
     }
 
     a{
