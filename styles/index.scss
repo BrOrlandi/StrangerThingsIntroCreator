@@ -229,6 +229,8 @@ body.overflow{
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, sans-serif;
     color: $color-title;
     bottom: 10px;
+    width: 550px;
+    max-width: 30%;
     font-size: 0.9em;
 
     &#btcether {
@@ -244,19 +246,10 @@ body.overflow{
         }
     }
 
-    &.right {
+    &.right{
         position: fixed;
         right: 10px;
         text-align: right;
-    }
-
-    &.intros {
-        margin-bottom: 51px;
-    }
-
-    &.developers {
-        max-width: 30%;
-        width: 550px;
     }
 
     a{
