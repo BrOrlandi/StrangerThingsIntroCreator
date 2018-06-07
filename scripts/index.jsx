@@ -65,6 +65,9 @@ class App extends React.Component {
                 }
                 window.loadedOpening = {...opening};
                 this.setState({opening,download: true});
+                if(this.props.download) {
+                    downloadVideo(props.hash);
+                }
                },
                 error: ajaxErrorFunction('Error when try to load the intro '+props.hash)
             });
@@ -111,7 +114,7 @@ class App extends React.Component {
 
         if(this.props.hash){
             state.loading = true;
-            if(!this.props.edit){
+            if(!this.props.edit && !this.props.download){
                 state.editing = false;
             }
         }
@@ -182,7 +185,29 @@ class App extends React.Component {
     }
 
     onClickDownload = (e) => {
-        downloadVideo.apply(this);
+        // check if the opening was not changed after loaded
+        let actualOpening = {...this.state.opening, logo: this.refs.logo.value};
+        let changed = JSON.stringify(window.loadedOpening) !== JSON.stringify(actualOpening);
+        let openingKey = this.props.hash;
+
+        if(changed){
+            swal({
+                title: '<h2>Text modified</h2>',
+                html: '<p>'+
+            'You have changed some of the text inputs. You need to play the new intro to save and request a download.</p>',
+                showCancelButton: true,
+                confirmButtonText: "Ok, play it!",
+                confirmButtonColor: "#807300",
+                animation: "slide-from-top"
+            }).then(() => {
+                this.submitStranger(e);
+            },() => {
+                console.log("cancel");
+            });
+            return;
+        }
+
+        downloadVideo(openingKey);
     }
 
     handleInputChange = (e)=>{
@@ -282,7 +307,8 @@ $(window).on('hashchange', function() {
     var params = location.hash.replace('#!/', '').split('/');
     var key = params[0];
     var edit = params[1] === "edit";
-    ReactDOM.render(<App hash={key} edit={edit}/>, document.getElementById('react-body'));
+    var download = params[1] === "download";
+    ReactDOM.render(<App hash={key} edit={edit} download={download} />, document.getElementById('react-body'));
 });
 
 var bg = require('../assets/bg.jpg');

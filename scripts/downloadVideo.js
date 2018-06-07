@@ -57,33 +57,10 @@ const requestVideo = function(donate,key, email){
     });
 };
 
-export default function downloadVideo(){
-    // check if the opening was not changed after loaded
-        let actualOpening = {...this.state.opening, logo: this.refs.logo.value};
-        let changed = JSON.stringify(window.loadedOpening) !== JSON.stringify(actualOpening);
-        let OpeningKey = this.props.hash;
-
-        if(changed){
-            swal({
-                title: '<h2>Text modified</h2>',
-                html: '<p>'+
-            'You have changed some of the text inputs. You need to play the new intro to save and request a download.</p>',
-                showCancelButton: true,
-                confirmButtonText: "Ok, play it!",
-                confirmButtonColor: "#807300",
-                animation: "slide-from-top"
-            }).then(() => {
-                this.submitStranger(e);
-            },() => {
-                console.log("cancel");
-            });
-            return;
-        }
-
+export default function downloadVideo(openingKey){
         // check if download is available:
-
         $.ajax({
-            url: "https://upsidedown.nihey.org/status?code="+OpeningKey,
+            url: "https://upsidedown.nihey.org/status?code="+openingKey,
             crossDomain: true,
             success: (data) => {
                 var queue = data.queue;
@@ -140,11 +117,11 @@ export default function downloadVideo(){
 
                      generateAlert.title = '<h2>Donate</h2>';
                      generateAlert.html = '<p>Click on the button below:</p>'
-                            +'<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="135"></iframe>'+generateAlert.html+donateText;
+                            +'<iframe src="./donateButtons.html#!/' + openingKey + '" height="135"></iframe>'+generateAlert.html+donateText;
 
-                    swal(generateAlert).then(requestVideo.bind(window, true, OpeningKey));
+                    swal(generateAlert).then(requestVideo.bind(window, true, openingKey));
                 },(_cancel_) => {
-                    swal(generateAlert).then(requestVideo.bind(window, false, OpeningKey));
+                    swal(generateAlert).then(requestVideo.bind(window, false, openingKey));
                 });
             },
             error: ajaxErrorFunction('Error when request video information to download.')
