@@ -142,6 +142,9 @@
 	                        }
 	                        window.loadedOpening = _extends({}, opening);
 	                        _this.setState({ opening: opening, download: true });
+	                        if (_this.props.download) {
+	                            (0, _downloadVideo2.default)(props.hash);
+	                        }
 	                    },
 	                    error: (0, _errorFunction2.default)('Error when try to load the intro ' + props.hash)
 	                });
@@ -201,7 +204,28 @@
 	        };
 
 	        _this.onClickDownload = function (e) {
-	            _downloadVideo2.default.apply(_this);
+	            // check if the opening was not changed after loaded
+	            var actualOpening = _extends({}, _this.state.opening, { logo: _this.refs.logo.value });
+	            var changed = JSON.stringify(window.loadedOpening) !== JSON.stringify(actualOpening);
+	            var openingKey = _this.props.hash;
+
+	            if (changed) {
+	                (0, _sweetalert2.default)({
+	                    title: '<h2>Text modified</h2>',
+	                    html: '<p>' + 'You have changed some of the text inputs. You need to play the new intro to save and request a download.</p>',
+	                    showCancelButton: true,
+	                    confirmButtonText: "Ok, play it!",
+	                    confirmButtonColor: "#807300",
+	                    animation: "slide-from-top"
+	                }).then(function () {
+	                    _this.submitStranger(e);
+	                }, function () {
+	                    console.log("cancel");
+	                });
+	                return;
+	            }
+
+	            (0, _downloadVideo2.default)(openingKey);
 	        };
 
 	        _this.handleInputChange = function (e) {
@@ -250,7 +274,7 @@
 
 	            if (this.props.hash) {
 	                state.loading = true;
-	                if (!this.props.edit) {
+	                if (!this.props.edit && !this.props.download) {
 	                    state.editing = false;
 	                }
 	            }
@@ -414,7 +438,8 @@
 	    var params = location.hash.replace('#!/', '').split('/');
 	    var key = params[0];
 	    var edit = params[1] === "edit";
-	    _reactDom2.default.render(_react2.default.createElement(App, { hash: key, edit: edit }), document.getElementById('react-body'));
+	    var download = params[1] === "download";
+	    _reactDom2.default.render(_react2.default.createElement(App, { hash: key, edit: edit, download: download }), document.getElementById('react-body'));
 	});
 
 	var bg = __webpack_require__(201);
@@ -33911,9 +33936,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	exports.default = downloadVideo;
 
 	var _sweetalert = __webpack_require__(196);
@@ -33968,34 +33990,10 @@
 	    });
 	};
 
-	function downloadVideo() {
-	    var _this = this;
-
-	    // check if the opening was not changed after loaded
-	    var actualOpening = _extends({}, this.state.opening, { logo: this.refs.logo.value });
-	    var changed = JSON.stringify(window.loadedOpening) !== JSON.stringify(actualOpening);
-	    var OpeningKey = this.props.hash;
-
-	    if (changed) {
-	        (0, _sweetalert2.default)({
-	            title: '<h2>Text modified</h2>',
-	            html: '<p>' + 'You have changed some of the text inputs. You need to play the new intro to save and request a download.</p>',
-	            showCancelButton: true,
-	            confirmButtonText: "Ok, play it!",
-	            confirmButtonColor: "#807300",
-	            animation: "slide-from-top"
-	        }).then(function () {
-	            _this.submitStranger(e);
-	        }, function () {
-	            console.log("cancel");
-	        });
-	        return;
-	    }
-
+	function downloadVideo(openingKey) {
 	    // check if download is available:
-
 	    $.ajax({
-	        url: "https://upsidedown.nihey.org/status?code=" + OpeningKey,
+	        url: "https://upsidedown.nihey.org/status?code=" + openingKey,
 	        crossDomain: true,
 	        success: function success(data) {
 	            var queue = data.queue;
@@ -34030,11 +34028,11 @@
 	                var donateText = ['<p>', '  Please, use the same email from you PayPal account.', "  You'll be able to add as many e-mails as you want to", '  <b>this video</b> without having to donate again. Just add', '  your other emails after the first one, without donating.', '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.', '  By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.', '</p>'].join('');
 
 	                generateAlert.title = '<h2>Donate</h2>';
-	                generateAlert.html = '<p>Click on the button below:</p>' + '<iframe src="./donateButtons.html#!/' + OpeningKey + '" height="135"></iframe>' + generateAlert.html + donateText;
+	                generateAlert.html = '<p>Click on the button below:</p>' + '<iframe src="./donateButtons.html#!/' + openingKey + '" height="135"></iframe>' + generateAlert.html + donateText;
 
-	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, true, OpeningKey));
+	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, true, openingKey));
 	            }, function (_cancel_) {
-	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, false, OpeningKey));
+	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, false, openingKey));
 	            });
 	        },
 	        error: (0, _errorFunction2.default)('Error when request video information to download.')
