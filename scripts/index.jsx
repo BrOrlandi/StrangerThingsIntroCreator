@@ -267,7 +267,7 @@ class App extends React.Component {
 
             content = <form id="stranger-form" onSubmit={this.submitStranger}>
                 {downloadButton}
-                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="27" defaultValue={opening.logo} />
+                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="27" defaultValue={opening.logo} autoFocus/>
                 {creditsInputs}
                 {/* <input ref="credits1" spellCheck="false" maxLength="100" defaultValue="A NETFLIX ORIGINAL SERIES" type="text"/> */}
                   {notice}
