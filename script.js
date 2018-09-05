@@ -375,7 +375,7 @@
 	                    'form',
 	                    { id: 'stranger-form', onSubmit: this.submitStranger },
 	                    downloadButton,
-	                    _react2.default.createElement('textarea', { ref: 'logo', id: 'f-logo', rows: '2', spellCheck: 'false', maxLength: '27', defaultValue: opening.logo }),
+	                    _react2.default.createElement('textarea', { ref: 'logo', id: 'f-logo', rows: '2', spellCheck: 'false', maxLength: '27', defaultValue: opening.logo, autoFocus: true }),
 	                    creditsInputs,
 	                    notice,
 	                    _react2.default.createElement(
