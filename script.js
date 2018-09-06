@@ -33934,7 +33934,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.default = downloadVideo;
 
@@ -33951,93 +33951,97 @@
 	var $ = __webpack_require__(195);
 
 	var calcTime = function calcTime(queue) {
-	    var minutes = (queue + 1) * 50;
-	    var hours = Math.floor(minutes / 60);
-	    var days = Math.floor(hours / 24);
-	    var time = "";
-	    if (days > 0) {
-	        time += days + " days";
+	  var minutes = (queue + 1) * 50;
+	  var hours = Math.floor(minutes / 60);
+	  var days = Math.floor(hours / 24);
+	  var time = "";
+	  if (days > 0) {
+	    time += days + " days";
+	  }
+	  if (days < 3) {
+	    hours = hours % 24;
+	    minutes = minutes % 60;
+	    if (hours > 0) {
+	      time += " " + hours + " hours";
 	    }
-	    if (days < 3) {
-	        hours = hours % 24;
-	        minutes = minutes % 60;
-	        if (hours > 0) {
-	            time += " " + hours + " hours";
-	        }
-	        if (minutes > 0) {
-	            time += " " + minutes + " minutes";
-	        }
+	    if (minutes > 0) {
+	      time += " " + minutes + " minutes";
 	    }
-	    return time;
+	  }
+	  return time;
 	};
 
 	var requestVideo = function requestVideo(donate, key, email) {
-	    if (email === false) return false;
+	  if (email === false) return false;
 
-	    var url = "https://upsidedown.nihey.org/request?code=" + key + "&email=" + email;
-	    $.ajax({
-	        url: url,
-	        type: 'GET',
-	        crossDomain: true,
-	        success: function success(data) {
-	            var queue = data.queue;
-	            (0, _sweetalert2.default)({
-	                title: '<h2>Video Request Sent</h2>',
-	                html: '<p>' + 'Your video has been queued. Your current position on the queue is <b>' + (queue + 1) + '</b>, which will take up to <b>' + calcTime(queue) + '</b>.<br>' + 'The link to download the video will be sent to the e-mail:<br>' + '</p><span class="email">' + email + '</span>' + (donate ? '<p style="margin-top: 15px;">But as you donated, we will bump you up on the queue.' + '  Thank you so much for supporting us! You should receive the confirmation email within a few minutes.' + '</p>' : '') + '<p style="margin-top: 15px;">By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.</p>'
-	            });
-	        },
-	        error: (0, _errorFunction2.default)('Error when request video download.')
-	    });
+	  var url = "https://upsidedown.nihey.org/request?code=" + key + "&email=" + email;
+	  $.ajax({
+	    url: url,
+	    type: 'GET',
+	    crossDomain: true,
+	    success: function success(data) {
+	      var queue = data.queue;
+	      (0, _sweetalert2.default)({
+	        title: '<h2>Video Request Sent</h2>',
+	        html: '<p>' + 'Your video has been queued. Your current position on the queue is <b>' + (queue + 1) + '</b>, which will take up to <b>' + calcTime(queue) + '</b>.<br>' + 'The link to download the video will be sent to the e-mail:<br>' + '</p><span class="email">' + email + '</span>' + (donate ? '<p style="margin-top: 15px;">But as you donated, we will bump you up on the queue.' + '  Thank you so much for supporting us! You should receive the confirmation email within a few minutes.' + '</p>' : '') + '<p style="margin-top: 15px;">By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.</p>'
+	      });
+	    },
+	    error: (0, _errorFunction2.default)('Error when request video download.')
+	  });
 	};
 
 	function downloadVideo(openingKey) {
-	    // check if download is available:
-	    $.ajax({
-	        url: "https://upsidedown.nihey.org/status?code=" + openingKey,
-	        crossDomain: true,
-	        success: function success(data) {
-	            var queue = data.queue;
+	  // check if download is available:
+	  $.ajax({
+	    url: "https://upsidedown.nihey.org/status?code=" + openingKey,
+	    crossDomain: true,
+	    success: function success(data) {
+	      var queue = data.queue;
 
-	            // video already rendered
-	            if (data.url) {
-	                (0, _sweetalert2.default)({
-	                    title: '<h2>Download</h2>',
-	                    html: '<p>' + 'This video has already been generated, click the link below to download.<br><br>' + '<a href="' + data.url + '">' + data.url + '</a></p>'
-	                });
-	                return;
-	            }
+	      if (data.status === 'not_queued') {
+	        queue = data.queueSize;
+	      }
 
-	            var generateAlert = {
-	                title: '<h2>Video Download</h2>',
-	                html: '<p>' + 'Type your email below and you will receive a message with the URL to download your video when it\'s ready' + '</p>',
-	                input: 'email',
-	                showCancelButton: true,
-	                inputPlaceholder: "Your e-mail...",
-	                showLoaderOnConfirm: true
-	            };
+	      // video already rendered
+	      if (data.url) {
+	        (0, _sweetalert2.default)({
+	          title: '<h2>Download</h2>',
+	          html: '<p>' + 'This video has already been generated, click the link below to download.<br><br>' + '<a href="' + data.url + '">' + data.url + '</a></p>'
+	        });
+	        return;
+	      }
 
-	            (0, _sweetalert2.default)({
-	                title: '<h2>Donate and Download</h2>',
-	                html: '<p>' + 'We want to provide videos for free, but we have to use a server to render it, which costs money.<br>' + 'There are <b>' + (queue + 1) + ' videos</b> in front of you and it will take <b>' + calcTime(queue) + '</b> to be processed.<br>' + 'Can\'t wait for it? Donate at least <b>5 dollars</b>, you will jump the queue and your video will be ready in few hours.<br>' + 'The video will be rendered in Full HD quality and MP4 file. To see a sample video click ' + '<a href="https://youtu.be/Q0eEXKyA540" target="_blank">here</a>. ' + 'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.<br>' + 'By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.' + '</p>',
-	                showCancelButton: true,
-	                confirmButtonText: "Yes, donate!",
-	                cancelButtonText: "No, I'll get in the queue!",
-	                animation: "slide-from-top"
-	            }).then(function (_success_) {
+	      var generateAlert = {
+	        title: '<h2>Video Download</h2>',
+	        html: '<p>' + 'Type your email below and you will receive a message with the URL to download your video when it\'s ready' + '</p>',
+	        input: 'email',
+	        showCancelButton: true,
+	        inputPlaceholder: "Your e-mail...",
+	        showLoaderOnConfirm: true
+	      };
 
-	                var donateText = ['<p>', '  Please, use the same email from you PayPal account.', "  You'll be able to add as many e-mails as you want to", '  <b>this video</b> without having to donate again. Just add', '  your other emails after the first one, without donating.', '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.', '  By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.', '</p>'].join('');
+	      (0, _sweetalert2.default)({
+	        title: '<h2>Donate and Download</h2>',
+	        html: '<p>' + 'We want to provide videos for free, but we have to use a server to render it, which costs money.<br>' + 'There are <b>' + (queue + 1) + ' videos</b> in front of you and it will take <b>' + calcTime(queue) + '</b> to be processed.<br>' + 'Can\'t wait for it? Donate at least <b>5 dollars</b>, you will jump the queue and your video will be ready in few hours.<br>' + 'The video will be rendered in Full HD quality and MP4 file. To see a sample video click ' + '<a href="https://youtu.be/Q0eEXKyA540" target="_blank">here</a>. ' + 'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.<br>' + 'By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.' + '</p>',
+	        showCancelButton: true,
+	        confirmButtonText: "Yes, donate!",
+	        cancelButtonText: "No, I'll get in the queue!",
+	        animation: "slide-from-top"
+	      }).then(function (_success_) {
 
-	                generateAlert.title = '<h2>Donate</h2>';
-	                generateAlert.html = '<p>Click on the button below:</p>' + '<iframe src="./donateButtons.html#!/' + openingKey + '" height="135"></iframe>' + generateAlert.html + donateText;
+	        var donateText = ['<p>', '  Please, use the same email from you PayPal account.', "  You'll be able to add as many e-mails as you want to", '  <b>this video</b> without having to donate again. Just add', '  your other emails after the first one, without donating.', '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.', '  By using this website you are agreeing to our <a href="termsOfService.html" target="_blank">Terms of Service</a>.', '</p>'].join('');
 
-	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, true, openingKey));
-	            }, function (_cancel_) {
-	                (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, false, openingKey));
-	            });
-	        },
-	        error: (0, _errorFunction2.default)('Error when request video information to download.')
-	    });
-	};
+	        generateAlert.title = '<h2>Donate</h2>';
+	        generateAlert.html = '<p>Click on the button below:</p>' + '<iframe src="./donateButtons.html#!/' + openingKey + '" height="135"></iframe>' + generateAlert.html + donateText;
+
+	        (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, true, openingKey));
+	      }, function (_cancel_) {
+	        (0, _sweetalert2.default)(generateAlert).then(requestVideo.bind(window, false, openingKey));
+	      });
+	    },
+	    error: (0, _errorFunction2.default)('Error when request video information to download.')
+	  });
+	}
 
 /***/ },
 /* 198 */
