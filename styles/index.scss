@@ -196,12 +196,21 @@ body.overflow{
 
 }
 
-.swal2-icon.swal2-error {
-    border-color: $color-title;
-    .line{
-        background-color: $color-title;
+.swal2-icon{
+
+    &.swal2-error {
+        border-color: $color-title;
+        .line{
+            background-color: $color-title;
+        }
+    }
+
+    &.swal2-warning {
+        // border-color: $color-title; // not working, don't know why
+        // color: $color-title;
     }
 }
+
 
 ::-webkit-scrollbar {
     width: 10px;

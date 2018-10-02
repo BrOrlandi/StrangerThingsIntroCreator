@@ -43,7 +43,8 @@ class App extends React.Component {
             loading: false,
             alreadyPlayed: false,
             download: false,
-            opening: defaultOpening
+            opening: defaultOpening,
+            shouldAlertAboutSpace: true,
         }
     }
 
@@ -222,8 +223,29 @@ class App extends React.Component {
         }
     }
 
-    render(){
+    shouldComponentUpdate(_, nextState) {
+        if(nextState.shouldAlertAboutSpace !== this.state.shouldAlertAboutSpace) {
+            return false;
+        }
+        return true;
+    }
 
+    _onKeyUpLogo = (event) => {
+        if(' ' !== event.key) {
+            return;
+        }
+
+        this.refs.logo.value = this.refs.logo.value.replace(' ','');
+
+        if(this.state.shouldAlertAboutSpace) {
+            swal("Sorry!", "White space is not allowed in the title! For a better animation try to use only one word per line.", "warning");
+            this.setState({
+                shouldAlertAboutSpace: false,
+            })
+        }
+    }
+
+    render(){
         var notice;
         if(this.state.canPlay == 'can'){
             notice = <p className="intro-text">
@@ -267,7 +289,7 @@ class App extends React.Component {
 
             content = <form id="stranger-form" onSubmit={this.submitStranger}>
                 {downloadButton}
-                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="27" defaultValue={opening.logo} autoFocus/>
+                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="27" defaultValue={opening.logo} onKeyUp={this._onKeyUpLogo} autoFocus/>
                 {creditsInputs}
                 {/* <input ref="credits1" spellCheck="false" maxLength="100" defaultValue="A NETFLIX ORIGINAL SERIES" type="text"/> */}
                   {notice}
