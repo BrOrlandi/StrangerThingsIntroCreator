@@ -92,7 +92,7 @@
 
 
 	_sweetalert2.default.setDefaults({
-	    background: 'black',
+	    background: '#060606',
 	    customClass: 'stranger-alert'
 	});
 
@@ -234,13 +234,29 @@
 	            _this.setState(opening);
 	        };
 
+	        _this._onKeyUpLogo = function (event) {
+	            if (' ' !== event.key) {
+	                return;
+	            }
+
+	            _this.refs.logo.value = _this.refs.logo.value.replace(' ', '');
+
+	            if (_this.state.shouldAlertAboutSpace) {
+	                (0, _sweetalert2.default)("Sorry!", "White space is not allowed in the title! For a better animation try to use only one word per line.", "warning");
+	                _this.setState({
+	                    shouldAlertAboutSpace: false
+	                });
+	            }
+	        };
+
 	        _this.state = {
 	            canPlay: null,
 	            editing: false,
 	            loading: false,
 	            alreadyPlayed: false,
 	            download: false,
-	            opening: defaultOpening
+	            opening: defaultOpening,
+	            shouldAlertAboutSpace: true
 	        };
 	        return _this;
 	    }
@@ -313,9 +329,16 @@
 	            }
 	        }
 	    }, {
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate(_, nextState) {
+	            if (nextState.shouldAlertAboutSpace !== this.state.shouldAlertAboutSpace) {
+	                return false;
+	            }
+	            return true;
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-
 	            var notice;
 	            if (this.state.canPlay == 'can') {
 	                notice = _react2.default.createElement(
@@ -375,7 +398,7 @@
 	                    'form',
 	                    { id: 'stranger-form', onSubmit: this.submitStranger },
 	                    downloadButton,
-	                    _react2.default.createElement('textarea', { ref: 'logo', id: 'f-logo', rows: '2', spellCheck: 'false', maxLength: '27', defaultValue: opening.logo, autoFocus: true }),
+	                    _react2.default.createElement('textarea', { ref: 'logo', id: 'f-logo', rows: '2', spellCheck: 'false', maxLength: '27', defaultValue: opening.logo, onKeyUp: this._onKeyUpLogo, autoFocus: true }),
 	                    creditsInputs,
 	                    notice,
 	                    _react2.default.createElement(
