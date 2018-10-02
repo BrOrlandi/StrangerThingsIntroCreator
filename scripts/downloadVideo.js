@@ -121,7 +121,7 @@ export default function downloadVideo(openingKey){
 
         generateAlert.title = '<h2>Donate</h2>';
         generateAlert.html = '<p>Thanks for your support! Remember, at least $5 Dollars for the rendered video.</p><p>Click on the button below and proceed to the donation via PayPal.</p>'
-                            +'<iframe src="./donateButtons.html#!/' + openingKey + '" height="135"></iframe>'+generateAlert.html+donateText;
+                            +'<iframe src="./donateButtons.html#!/' + openingKey + '" height="75"></iframe>'+generateAlert.html+donateText;
 
         swal(generateAlert).then(requestVideo.bind(window, true, openingKey));
       },(_cancel_) => {
