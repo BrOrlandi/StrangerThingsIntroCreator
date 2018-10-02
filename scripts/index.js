@@ -10,7 +10,7 @@ import { postUrl, getUrl } from './urls';
 import './bitcoinEther';
 
 swal.setDefaults({
-    background: 'black',
+    background: '#060606',
     customClass: 'stranger-alert',
 });
 

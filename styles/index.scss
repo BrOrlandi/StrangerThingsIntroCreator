@@ -124,7 +124,7 @@ body.overflow{
 
 .stranger-alert{
     border: 2px solid $color-title;
-    h2, p{
+    h2 {
         color:  $color-title;
     }
 
@@ -186,12 +186,8 @@ body.overflow{
     }
 
     a{
-        color: #C11B1F;
+        color: $color-title;
         font-weight:bold;
-        text-decoration: none;
-        &:hover,&:focus{
-            text-decoration: underline;
-        }
     }
 
 }
