@@ -4,10 +4,13 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import makeTheStrangerIntro from 'makeTheStrangerIntro';
 import swal from 'sweetalert2';
-import downloadVideo from 'downloadVideo';
-import ajaxErrorFunction from 'errorFunction';
+import bowser from 'bowser';
+import downloadVideo from './downloadVideo';
+import ajaxErrorFunction from './errorFunction';
 import { postUrl, getUrl } from './urls';
 import './bitcoinEther';
+
+const browser = bowser.getParser(window.navigator.userAgent);
 
 swal.setDefaults({
     background: '#060606',
@@ -48,7 +51,7 @@ class App extends React.Component {
         }
     }
 
-    checkHash = (props,autoPlay = false)=>{
+    checkHash = (props, autoPlay = false)=>{
         if(props.hash){
             var url = getUrl(props.hash);
             $.ajax({
@@ -246,11 +249,15 @@ class App extends React.Component {
     }
 
     render(){
+        const recommendChrome = 'We recommend using Google Chrome for the best experience.';
+        const isNotChrome = !browser.isBrowser('chrome');
+
         var notice;
         if(this.state.canPlay == 'can'){
             notice = <p className="intro-text">
               The following animation is performance intensive, and will play audio. If you
-              experience any issues, try sizing down your browser and refreshing.
+              experience any issues, try sizing down your browser and refreshing.<br/><br/>
+              {isNotChrome && recommendChrome}
             </p>
         }else if(this.state.canPlay == 'shouldnt'){
             notice = <p className="intro-text">
