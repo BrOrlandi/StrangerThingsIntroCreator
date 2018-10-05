@@ -346,7 +346,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var recommendChrome = 'We recommend using Google Chrome for the best experience.';
-	            var isChrome = browser.isBrowser('chrome');
+	            var isNotChrome = !browser.isBrowser('chrome');
 
 	            var notice;
 	            if (this.state.canPlay == 'can') {
@@ -356,7 +356,7 @@
 	                    'The following animation is performance intensive, and will play audio. If you experience any issues, try sizing down your browser and refreshing.',
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
-	                    isChrome && recommendChrome
+	                    isNotChrome && recommendChrome
 	                );
 	            } else if (this.state.canPlay == 'shouldnt') {
 	                notice = _react2.default.createElement(
