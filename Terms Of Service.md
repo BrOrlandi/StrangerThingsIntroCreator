@@ -1,6 +1,6 @@
 Last updated: February 25, 2017.
 
-These Terms of Service ("Terms", "Terms of Service") refers to the Stranger Things Intro Creator website (brorlandi.github.io/StrangerThingsIntroCreator) (the "Service") operated by Bruno Orlandi and Nihey Takizawa ("us", "we", or "our").
+These Terms of Service ("Terms", "Terms of Service") refers to the Stranger Things Intro Creator website (brorlandi.github.io/StrangerThingsIntroCreator) (the "Service") operated by Kassel Labs ("us", "we", or "our").
 Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
 
 #### About the Service
@@ -48,4 +48,4 @@ Our Service may contain links to third-party web sites or services that are not 
 
 We reserve the right, at our sole discretion, to modify or replace these Terms at any time.
 
-If you have any questions about these Terms, please contact us via brorlandi@gmail.com and nihey.takizawa@gmail.com .
+If you have any questions about these Terms, please contact us via kassellabs@gmail.com.

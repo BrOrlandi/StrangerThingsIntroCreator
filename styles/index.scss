@@ -1,6 +1,8 @@
 @import '~sweetalert2/dist/sweetalert2.min.css';
 @import "strangerintro";
 
+$mobile: 'only screen and (max-device-width : 500px)';
+
 video.fullscreen {
   position: fixed;
   top: 50%;
@@ -23,6 +25,10 @@ body.overflow{
 
     .intro-title{
         font-size: 50px;
+
+        @media #{$mobile} {
+            margin-top: 80px;
+        }
     }
 
     input,textarea{
@@ -295,3 +301,23 @@ iframe{
 #stranger-form {
     margin-bottom: 40px;
 }
+
+.kasselLogo {
+    position: absolute;
+    top: 0;
+
+    img {
+      margin: 16px;
+      height: 20px;
+
+
+    }
+
+    @media #{$mobile} {
+        img {
+            height: 30px;
+        }
+          width: 100%;
+          text-align: center;
+    }
+  }
