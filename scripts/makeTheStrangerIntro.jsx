@@ -43,20 +43,22 @@ const word2Mapping = {
 };
 
 window.showStrangerIntro = function(){
-    $("#config").addClass('hide');
-    $("#StrangerIntro").removeClass('hide');
-    $("body").removeClass('overflow');
-    document.querySelector("#video").pause();
+  $("#config").addClass('hide');
+  $("#kasselLogo").addClass('hide');
+  $("#StrangerIntro").removeClass('hide');
+  $("body").removeClass('overflow');
+  document.querySelector("#video").pause();
 };
 
 window.stopStrangerIntro = function(){
-    $("#config").removeClass('hide');
-    $("#StrangerIntro").addClass('hide');
-    $("body").addClass('overflow');
-    document.querySelector("#video").play();
+  $("#config").removeClass('hide');
+  $("#kasselLogo").removeClass('hide');
+  $("#StrangerIntro").addClass('hide');
+  $("body").addClass('overflow');
+  document.querySelector("#video").play();
 
-    $('.title--full').removeClass('title--show');
-    $('.credits-final').removeClass('credits-group--show');
+  $('.title--full').removeClass('title--show');
+  $('.credits-final').removeClass('credits-group--show');
 };
 
 const makeTheStrangerIntro = function(opening){
