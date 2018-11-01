@@ -179,6 +179,7 @@ body.overflow{
     }
 
     .swal2-content{
+        font-family: $font-credits;
         color: #cecece;
     }
 
@@ -237,7 +238,7 @@ body.overflow{
 // }
 
 .footerText{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, sans-serif;
+    font-family: $font-credits;
     color: $color-title;
     bottom: 10px;
     width: 550px;
