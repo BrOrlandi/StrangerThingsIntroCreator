@@ -1,6 +1,8 @@
 @import '~sweetalert2/dist/sweetalert2.min.css';
 @import "strangerintro";
 
+$mobile: 'only screen and (max-device-width : 500px)';
+
 video.fullscreen {
   position: fixed;
   top: 50%;
@@ -23,6 +25,10 @@ body.overflow{
 
     .intro-title{
         font-size: 50px;
+
+        @media #{$mobile} {
+            margin-top: 80px;
+        }
     }
 
     input,textarea{
@@ -38,7 +44,7 @@ body.overflow{
       text-align: center;
       outline: none;
       font-family: $font-credits;
-      font-size: 1em;
+      font-size: 18px;
       font-weight: 800;
 
       &:active, &:focus {
@@ -124,7 +130,7 @@ body.overflow{
 
 .stranger-alert{
     border: 2px solid $color-title;
-    h2, p{
+    h2 {
         color:  $color-title;
     }
 
@@ -157,7 +163,7 @@ body.overflow{
       text-align: center;
       outline: none;
       font-family: $font-credits;
-      font-size: 1em;
+      font-size: 18px;
       font-weight: 800;
 
       &:active, &:focus {
@@ -167,7 +173,7 @@ body.overflow{
     }
 
     .email{
-        text-align: center; 
+        text-align: center;
         font-weight: bold;
         color:  $color-title;
     }
@@ -186,22 +192,27 @@ body.overflow{
     }
 
     a{
-        color: #C11B1F;
+        color: $color-title;
         font-weight:bold;
-        text-decoration: none;
-        &:hover,&:focus{
-            text-decoration: underline;
+    }
+
+}
+
+.swal2-icon{
+
+    &.swal2-error {
+        border-color: $color-title;
+        .line{
+            background-color: $color-title;
         }
     }
 
-}
-
-.swal2-icon.swal2-error {
-    border-color: $color-title;
-    .line{
-        background-color: $color-title;
+    &.swal2-warning {
+        // border-color: $color-title; // not working, don't know why
+        // color: $color-title;
     }
 }
+
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -225,16 +236,33 @@ body.overflow{
 // 	background: darken($color-title, 10);
 // }
 
-.rightFooter{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+.footerText{
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, sans-serif;
     color: $color-title;
-    position: fixed;
     bottom: 10px;
-    right: 10px;
-    text-align: right;
     width: 550px;
-    max-width: 30%;
     font-size: 0.9em;
+
+    &#btcether {
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        width: 140px;
+        font-weight: bold;
+        display: flex;
+        line-height: 25px;
+        span {
+            margin-left: 5px;
+        }
+    }
+
+    &.right{
+        position: fixed;
+        right: 10px;
+        text-align: right;
+        max-width: 30%;
+    }
 
     a{
         color: $color-title;
@@ -258,14 +286,38 @@ body.overflow{
     text-align: left;
 
     div{
-        margin-bottom: .33em;
+        margin-bottom: 10px;
     }
 
     form{
-        margin-bottom: 5px;
+        margin-bottom: 15px;
     }
 }
 
 iframe{
     border: none;
 }
+
+#stranger-form {
+    margin-bottom: 40px;
+}
+
+#kasselLogo {
+    position: absolute;
+    top: 0;
+
+    img {
+      margin: 16px;
+      height: 20px;
+
+
+    }
+
+    @media #{$mobile} {
+        img {
+            height: 30px;
+        }
+          width: 100%;
+          text-align: center;
+    }
+  }

@@ -12,14 +12,14 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    'script': './scripts/index.jsx',
+    'script': './scripts/index.js',
     'index.html': './index.html',
   },
 
   module: {
     loaders: [
       { test: /\.json$/, loader: 'json-loader'},
-      { test: /\.jsx?$/, exclude: /(node_modules|bower_components)\//, loader: 'babel-loader'},
+      { test: /\.js[x]?$/, exclude: /(node_modules|bower_components)\//, loader: 'babel-loader'},
       { test: /\.(ttf.*|eot.*|woff.*|ogg|mp3)$/, loader: 'file-loader'},
       { test: /.(png|jpe?g|gif|svg.*)$/, loader: 'file-loader!img-loader?optimizationLevel=7&progressive=true'},
       {
@@ -44,7 +44,8 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([{from: './termsOfService.html'},
         {from: './preview.png'},
-        {from: './.nojekyll'}
+        {from: './.nojekyll'},
+        {from: './donateButtons.html'},
 ]),
     cssExtractTextPlugin,
     new IndexHtmlPlugin('index.html', 'index.html'),

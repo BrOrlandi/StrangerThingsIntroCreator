@@ -12,8 +12,9 @@ $color-credits: #A8A6A7;
 $color-credits-top: #B2B0B1;
 $color-credits-bottom: $color-credits;
 
+$AvantFontName: 'ITC-Avant-Garde-Gothic';
 $font-title: 'BenguiatITCW01-BoldCn';
-$font-credits: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+$font-credits: $AvantFontName, sans-serif;
 
 $title-fsize: 28vmin;
 $title-fsize-large: 34vmin;
@@ -80,7 +81,6 @@ $credits-shadow-blur: 0.15vmin;
   transform: translateX(-50%) translateY(-50%);
 }
 
-// Font
 @font-face {
   font-family: $font-title;
   src: url('../assets/BenguiatProITC-BoldCond.eot') format('embedded-opentype'),
@@ -88,6 +88,11 @@ $credits-shadow-blur: 0.15vmin;
        url('../assets/BenguiatProITC-BoldCond.ttf') format('truetype');
   font-style: normal;
   font-weight: bold;
+}
+
+@font-face {
+  font-family: $AvantFontName;
+  src: url('../assets/ITC-Avant-Garde-Gothic.ttf') format('truetype'),
 }
 
 // Styles
