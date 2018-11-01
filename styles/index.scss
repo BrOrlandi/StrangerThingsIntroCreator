@@ -44,7 +44,7 @@ body.overflow{
       text-align: center;
       outline: none;
       font-family: $font-credits;
-      font-size: 1em;
+      font-size: 18px;
       font-weight: 800;
 
       &:active, &:focus {
@@ -163,7 +163,7 @@ body.overflow{
       text-align: center;
       outline: none;
       font-family: $font-credits;
-      font-size: 1em;
+      font-size: 18px;
       font-weight: 800;
 
       &:active, &:focus {
@@ -179,6 +179,7 @@ body.overflow{
     }
 
     .swal2-content{
+        font-family: $font-credits;
         color: #cecece;
     }
 
@@ -237,7 +238,7 @@ body.overflow{
 // }
 
 .footerText{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, sans-serif;
+    font-family: $font-credits;
     color: $color-title;
     bottom: 10px;
     width: 550px;
@@ -302,7 +303,7 @@ iframe{
     margin-bottom: 40px;
 }
 
-.kasselLogo {
+#kasselLogo {
     position: absolute;
     top: 0;
 
