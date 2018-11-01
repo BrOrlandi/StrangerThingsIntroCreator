@@ -4,10 +4,16 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import makeTheStrangerIntro from 'makeTheStrangerIntro';
 import swal from 'sweetalert2';
-import downloadVideo from 'downloadVideo';
+import bowser from 'bowser';
+import downloadVideo from './downloadVideo';
+import ajaxErrorFunction from './errorFunction';
+import { postUrl, getUrl } from './urls';
+import './bitcoinEther';
+
+const browser = bowser.getParser(window.navigator.userAgent);
 
 swal.setDefaults({
-    background: 'black',
+    background: '#060606',
     customClass: 'stranger-alert',
 });
 
@@ -45,7 +51,8 @@ class App extends React.Component {
             loading: false,
             alreadyPlayed: false,
             download: false,
-            opening: defaultOpening
+            opening: defaultOpening,
+            shouldAlertAboutSpace: true,
         }
     }
 
@@ -84,7 +91,7 @@ class App extends React.Component {
 
         if(this.props.hash){
             state.loading = true;
-            if(!this.props.edit){
+            if(!this.props.edit && !this.props.download){
                 state.editing = false;
             }
         }
@@ -127,19 +134,19 @@ class App extends React.Component {
             swal("Oops...", "Logo can't have more than 2 lines.", "warning");
             return;
         }
-        // TODO check limits, check 2 line only
 
         this.setLoading();
         $.ajax({
-            url: "https://strangerthingsintrocreator.firebaseio.com/openings.json",
+            url: postUrl(),
             method: "POST",
             data: JSON.stringify(opening),
             dataType: "json",
             success: (data)=>{
-                var key = data.name.substring(1);
+                var key = 'A'+data.name.substring(1);
                 // CreatedIntros.save(key,opening);
                 location.hash = '!/'+key;
-            }
+            },
+            error: ajaxErrorFunction('Error when creating the intro.')
         });
     }
 
@@ -153,7 +160,29 @@ class App extends React.Component {
     }
 
     onClickDownload = (e) => {
-        downloadVideo.apply(this);
+        // check if the opening was not changed after loaded
+        let actualOpening = {...this.state.opening, logo: this.refs.logo.value};
+        let changed = JSON.stringify(window.loadedOpening) !== JSON.stringify(actualOpening);
+        let openingKey = this.props.hash;
+
+        if(changed){
+            swal({
+                title: '<h2>Text modified</h2>',
+                html: '<p>'+
+            'You have changed some of the text inputs. You need to play the new intro to save and request a download.</p>',
+                showCancelButton: true,
+                confirmButtonText: "Ok, play it!",
+                confirmButtonColor: "#807300",
+                animation: "slide-from-top"
+            }).then(() => {
+                this.submitStranger(e);
+            },() => {
+                console.log("cancel");
+            });
+            return;
+        }
+
+        downloadVideo(openingKey);
     }
 
     handleInputChange = (e)=>{
@@ -181,13 +210,25 @@ class App extends React.Component {
       tryout();
     }
 
+    shouldComponentUpdate(_, nextState) {
+        if(nextState.shouldAlertAboutSpace !== this.state.shouldAlertAboutSpace) {
+            return false;
+        }
+        return true;
+    }
+
+
+
     render(){
+        const recommendChrome = 'We recommend using Google Chrome for the best experience.';
+        const isNotChrome = !browser.isBrowser('chrome');
 
         var notice;
         if(this.state.canPlay == 'can'){
             notice = <p className="intro-text">
               The following animation is performance intensive, and will play audio. If you
-              experience any issues, try sizing down your browser and refreshing.
+              experience any issues, try sizing down your browser and refreshing.<br/><br/>
+              {isNotChrome && recommendChrome}
             </p>
         }else if(this.state.canPlay == 'shouldnt'){
             notice = <p className="intro-text">
@@ -226,7 +267,7 @@ class App extends React.Component {
 
             content = <form id="stranger-form" onSubmit={this.submitStranger}>
                 {downloadButton}
-                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="27" defaultValue={opening.logo} />
+                <textarea ref="logo" id="f-logo" rows="2" spellCheck="false" maxLength="27" defaultValue={opening.logo} onKeyUp={this._onKeyUpLogo} autoFocus/>
                 {creditsInputs}
                 {/* <input ref="credits1" spellCheck="false" maxLength="100" defaultValue="A NETFLIX ORIGINAL SERIES" type="text"/> */}
                   {notice}
@@ -266,7 +307,8 @@ $(window).on('hashchange', function() {
     var params = location.hash.replace('#!/', '').split('/');
     var key = params[0];
     var edit = params[1] === "edit";
-    ReactDOM.render(<App hash={key} edit={edit}/>, document.getElementById('react-body'));
+    var download = params[1] === "download";
+    ReactDOM.render(<App hash={key} edit={edit} download={download} />, document.getElementById('react-body'));
 });
 
 var bg = require('../assets/bg.jpg');

@@ -35,7 +35,7 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8&appId=172547513211360";
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=172547513211360";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -43,6 +43,13 @@
     The following demo requires javascript to run. Please enable it and
     refresh the browser.
   </noscript>
+
+    <div id="kasselLogo">
+      <a href="https://kassellabs.io" target="_blank">
+        <img src="./assets/KasselLabsLogo.png" alt="Kassel Labs" height="20" />
+      </a>
+    </div>
+
     <div id="config">
         <video id="video" class="fullscreen" preload="auto" autoplay loop muted>
             <source src="https://player.vimeo.com/external/178812339.hd.mp4?s=bf1db383854643d8d92aac96a5bca01802122d46&profile_id=174" type="video/mp4">
@@ -50,35 +57,30 @@
         <div id="react-body" ></div>
         <div class="leftFooter">
 
-
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <input type="hidden" name="cmd" value="_s-xclick">
                 <input type="hidden" name="hosted_button_id" value="KET5T7C8PT92J">
                 <input type="hidden" name="custom" value="">
-                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                 <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
             </form>
 
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="KWZNUMH5KV6WN">
-                <input type="hidden" name="custom" value="">
-                <input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
-                <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-            </form>
+            <div id="btcether" class="footerText">
+              <img src="assets/bitcoin.svg" width="25px" height="25px"/>
+              <span href="#">Bitcoin & Ether</span>
+            </div>
 
-            <div class="fb-share-button" data-href="https://brorlandi.github.io/StrangerThingsIntroCreator/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbrorlandi.github.io%2FStrangerThingsIntroCreator%2F&amp;src=sdkpreparse">Share</a></div>
+            <div class="fb-like" data-href="https://www.facebook.com/StrangerThingsIntroCreator/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
             <div>
                 <a href="https://twitter.com/share" class="twitter-share-button"{count} data-text="Check out this Stranger Things Intro Creator!" data-hashtags="StrangerThings">Tweet</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
-            <!--<div>
-                <iframe src="https://ghbtns.com/github-btn.html?user=BrOrlandi&repo=StrangerThingsIntroCreator&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
-            </div>-->
         </div>
-        <div class="rightFooter">
+        <div class="footerText right">
+          <a href="http://westworldintrocreator.kassellabs.io/" target="_blank"><img src="assets/wic.jpg" alt="Westworld Intro Creator" width="120" style="margin-bottom: 20px"/></a><br>
+            <a href="https://brorlandi.github.io/StarWarsIntroCreator/" target="_blank"><img src="assets/swic.jpg" alt="Star Wars Intro Creator" width="120" style="margin-bottom: 20px"/></a>
             <a id="termsOfService" href="termsOfService.html">Terms of Service</a><br/>
-            <span style="line-height: 1.2">Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> and <a href="https://github.com/nihey" target="2">Nihey Takizawa</a> based on <a href="http://wbobeirne.com/stranger-things/" target="2">William O'Beirne</a> work.</span>
+            <span style="line-height: 1.2">Developed by <a href="https://kassellabs.io/" target="2">Kassel Labs</a> based on <a href="http://wbobeirne.com/stranger-things/" target="2">William O'Beirne</a> work.</span>
         </div>
     </div>
     <div id="StrangerIntro" class="hide">

@@ -9,3 +9,5 @@ bower_components/
 dist/
 /.project
 *.log
+
+.DS_Store

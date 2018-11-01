@@ -7,6 +7,7 @@
     "build": "webpack",
     "watch": "webpack -d --watch",
     "dev": "webpack-dev-server -d",
+    "start": "webpack-dev-server -d",
     "production": "NODE_ENV=production webpack -p",
     "test": "eslint . && webpack -d && webpack -p"
   },
@@ -21,6 +22,7 @@
   "author": "Bruno Orlandi <brorlandi@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bowser": "^2.0.0-beta.3",
     "jquery": "^3.1.0",
     "node-libs-browser": "^1.0.0",
     "react": "^15.0.2",
@@ -46,7 +48,7 @@
     "json-loader": "^0.5.2",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
-    "node-sass": "^3.7.0",
+    "node-sass": "^3.13.1",
     "postcss": "^5.2.0",
     "postcss-cli": "^2.6.0",
     "postcss-import": "^8.1.2",
