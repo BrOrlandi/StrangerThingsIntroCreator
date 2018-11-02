@@ -360,6 +360,7 @@ body {
     &-credit {
       font-weight: 800;
     //   text-transform: uppercase;
+      height: 2em;
 
       > span {
         @include v-rule(font-size, $credits-fsize * 0.8);
