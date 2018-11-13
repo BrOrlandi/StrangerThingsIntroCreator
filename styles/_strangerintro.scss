@@ -293,22 +293,6 @@ body {
   @include v-rule(font-size, $credits-fsize);
 
 
-  $wiggle: 0.015vmin;
-  @keyframes credits-wiggle {
-    0%  { transform: translateX(-50%) translateY(-50%) translateX(0)        translateY(0);        }
-    20% { transform: translateX(-50%) translateY(-50%) translateX(0)        translateY(-$wiggle); }
-    40% { transform: translateX(-50%) translateY(-50%) translateX($wiggle)  translateY(-$wiggle); }
-    60% { transform: translateX(-50%) translateY(-50%) translateX(0)        translateY($wiggle);  }
-    80% { transform: translateX(-50%) translateY(-50%) translateX(-$wiggle) translateY(0);        }
-    100%{ transform: translateX(-50%) translateY(-50%) translateX(-$wiggle) translateY($wiggle);  }
-  }
-  @keyframes credits-flash {
-    0%, 30%   { opacity: 1;    }
-    40%       { opacity: 0.97; }
-    42%, 85%  { opacity: 1;    }
-    92%       { opacity: 0.94; }
-    94%, 100% { opacity: 1;    }
-  }
   &-group,
   &-final {
     @include centerize;
@@ -319,8 +303,6 @@ body {
     &--show {
       opacity: 1;
       transition-delay: $credits-speed * 0.1;
-      animation: credits-wiggle (200ms * $TIME-FACTOR) infinite $credits-speed * 0.1,
-                 credits-flash (2200ms * $TIME-FACTOR) infinite $credits-speed * 0.1;
     }
   }
 
