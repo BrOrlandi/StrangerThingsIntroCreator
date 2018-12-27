@@ -96,7 +96,7 @@ export default function downloadVideo(openingKey){
         html: '<p>'+
                         'We want to provide videos for free, but we have to use a server to render it, which costs money.<br>'+
                         'There are <b>'+(queue+1)+' videos</b> in front of you and it will take <b>'+calcTime(queue)+'</b> to be processed.<br/><br/>'+
-                        'Can\'t wait for it? Donate at least <b>$5 Dollars</b>, you will jump the queue and your video will be ready in few hours.<br><br/>'+
+                        'Can\'t wait for it? Donate at least <b>$7 Dollars</b>, you will jump the queue and your video will be ready in few hours.<br><br/>'+
                         'The video will be rendered in Full HD quality and MP4 file. To see a sample video click '+
                         '<a href="https://youtu.be/Q0eEXKyA540" target="_blank">here</a>. <br/>'+
                         'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.<br><br/>'+
@@ -120,7 +120,7 @@ export default function downloadVideo(openingKey){
         ].join('');
 
         generateAlert.title = '<h2>Donate</h2>';
-        generateAlert.html = '<p>Thanks for your support! Remember, at least $5 Dollars for the rendered video.</p><p>Click on the button below and proceed to the donation via PayPal.</p>'
+        generateAlert.html = '<p>Thanks for your support! Remember, at least $7 Dollars for the rendered video.</p><p>Click on the button below and proceed to the donation via PayPal.</p>'
                             +'<iframe src="./donateButtons.html#!/' + openingKey + '" height="75"></iframe>'+generateAlert.html+donateText;
 
         swal(generateAlert).then(requestVideo.bind(window, true, openingKey));
