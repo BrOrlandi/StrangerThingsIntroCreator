@@ -79,6 +79,10 @@ body.overflow{
         text-shadow: none;
         transition: text-shadow 0.5s ease-out;
         outline: none;
+        border: 6px solid #C11B1F;
+        padding: 10px 20px;
+        border-radius: 15px;
+        background-color: rgba(0, 0, 0, 0.64);
 
         &:focus, &:hover {
             text-shadow: -1px 1px 8px #ccc, 1px -1px 8px #ccc;
@@ -88,10 +92,6 @@ body.overflow{
     .downloadButton{
         @extend .playButton;
         animation: pulseDownload 3s ease 0s infinite;
-        border: 6px solid #C11B1F;
-        padding: 5px 12px 5px;
-        border-radius: 15px;
-        background-color: rgba(0, 0, 0, 0.64);
 
         &:focus, &:hover {
             text-shadow: -1px 1px 8px #ccc, 1px -1px 8px #ccc;
